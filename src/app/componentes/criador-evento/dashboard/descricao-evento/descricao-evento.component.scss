@@ -1,0 +1,62 @@
+.descricao-container {
+  display: flex;
+
+  .essa, .passada {
+    padding: 1em;
+    line-height: 2em;
+    color: #FFB300;
+
+    div:last-child {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.registros {
+  display: flex;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    li {
+      margin: .5em;
+      pointer-events: none;
+
+
+      .descricao {
+        display: flex;
+        align-items: center;
+        padding: .5em;
+        background-color: #181a1b;
+        color: #FFB300;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+
+        div {
+          padding: .5em;
+          line-height: 2em;
+          span {
+            display: block;
+          }
+
+          &:last-child {
+            margin-left: auto;
+          }
+        }
+      }
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,67 @@
+.ingresso {
+  display: flex;
+  flex-direction: column;
+
+  .preco, .qtd-ingressos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em;
+
+
+    h1 {
+      font-size: 1.5625em;
+    }
+
+    .down {
+      h1 {
+        font-size: 1.875rem;
+        margin-left: auto;
+      }
+    }
+
+    .select {
+      margin-right: .5em;
+      flex-grow: 4;
+    }
+  }
+}
+
+@media all and (min-width: 300px) {
+  .ingresso {
+    .preco, .qtd-ingressos {
+
+      h1 {
+        font-size: 1em;
+      }
+
+      .down {
+        h1 {
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+}
+
+/* Tablet*/
+@media all and (min-width: 900px) {
+  .ingresso {
+
+    .preco {
+        flex-direction: row;
+
+      h1 {
+        font-size: 1em;
+      }
+
+      .down {
+        h1 {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
+

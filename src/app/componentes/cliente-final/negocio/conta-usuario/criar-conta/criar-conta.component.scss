@@ -1,0 +1,44 @@
+.container {
+  padding: 10em 1em 10em 1em;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.registrar {
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: white;
+}
+
+span {
+  color: white;
+}
+
+a {
+  padding: 20px;
+  text-align: center;
+  text-decoration: underline;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* Tablet*/
+@media all and (min-width: 500px) {
+  .registrar {
+    width: 400px;
+  }
+
+}

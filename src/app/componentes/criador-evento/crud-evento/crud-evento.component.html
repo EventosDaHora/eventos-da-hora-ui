@@ -1,0 +1,15 @@
+<section class="dashboard-container">
+  <div class="p-grid p-justify-between">
+    <div class="p-col-12 p-md-3 p-lg-3">
+      <p-card>
+        <p-menu [model]="items" [style]="{width: '100%'}"></p-menu>
+      </p-card>
+    </div>
+
+    <div class="p-col-12 p-md-9 p-lg-9">
+      <p-card>
+        <router-outlet></router-outlet>
+      </p-card>
+    </div>
+  </div>
+</section>

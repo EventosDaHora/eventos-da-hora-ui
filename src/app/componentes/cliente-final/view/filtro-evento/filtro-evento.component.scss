@@ -1,0 +1,103 @@
+.selects {
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  .select {
+    margin: 0 .5em;
+    width: 8em;
+
+    .titulo {
+      background-color: #0D0E0E;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+      padding: 1em;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dropdown {
+      background-color: #0D0E0E;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+      min-height: 8em;
+      width: 30em;
+      z-index: 100;
+      margin-top: .25em;
+
+      .calendario, .multiSelect {
+        display: flex;
+        width: 100%;
+      }
+
+      .multiSelect {
+        flex-direction: column;
+        position: relative;
+
+        .busca, .opcoes {
+          width: 100%;
+          border-bottom: 1px solid #d1cec9;
+        }
+
+        .busca-last {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #3e4446;
+          padding: .75em .5em .5em .5em;
+        }
+
+        .opcoes {
+          padding: .5em;
+        }
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: flex;
+            flex: 1 33%;
+            max-width: 33%;
+            padding: .15em;
+          }
+
+          li:hover {
+            background-color: transparent;
+          }
+        }
+
+        .actions {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: .5em;
+
+          a {
+            padding: .5em 1em;
+            color: white;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+          a:hover {
+            text-decoration: none;
+          }
+        }
+
+        hr {
+          background-color: black;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 900px) {
+  .selects {
+    display: none;
+  }
+}

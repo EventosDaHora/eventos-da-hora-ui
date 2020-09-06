@@ -1,0 +1,52 @@
+  <section class="card-container">
+    <div>
+      <p-carousel [value]="eventos"
+                  [numVisible]="4"
+                  [numScroll]="3"
+                  [circular]="false"
+                  [responsiveOptions]="responsiveOptions"
+                  class="carrossel">
+        <p-header>
+          <h1>Eventos Populares</h1>
+        </p-header>
+        <ng-template let-evento pTemplate="item">
+          <a routerLink="/checkout/evento">
+            <div class="car-details"
+                 fxLayoutAlign="center"
+                 fxLayout="row"
+                 fxLayout.xs="row"
+                 fxLayoutGap.xs="0">
+
+              <div class="p-nogutter">
+                <div class="container-img">
+                  <img src="/assets/show-live.jpg" alt="imagem"/>
+                </div>
+                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.nome}}</div>
+                <div class="evento-nome" *ngIf="!mostrarInfosEvento">{{evento.localizacao.pais}}</div>
+
+                <ng-template [ngIf]="mostrarInfosEvento">
+                  <div class="info-evento">
+                    <span class="local">{{evento.localizacao.local}}</span>
+                    <span class="cidade">{{evento.localizacao.pais}}, {{evento.localizacao.cidade}}</span>
+                  </div>
+
+                  <div class="data-valor">
+                    <span class="data">{{evento.data}}</span>
+                    <span class="valor">R$ {{120}},00</span>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngIf]="!mostrarInfosEvento">
+                  <div class="localidade">
+                    <span>20 eventos</span>
+                  </div>
+                </ng-template>
+
+              </div>
+            </div>
+          </a>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+  </section>

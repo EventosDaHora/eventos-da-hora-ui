@@ -1,0 +1,81 @@
+<section class="container">
+  <ng-template [ngIf]="eventosInseridos.length === 0">
+    <div class="carrinho-vazio">
+      <h1>Parece que seu carrinho está vazio...</h1>
+
+      <button label="Continue comprando" pButton
+              class="ui-button-primary"
+              routerLink="/"></button>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="eventosInseridos.length > 0">
+    <div class="carrinho">
+      <div class="titulo-carrinho">
+        <h1>Carrinho de compra</h1>
+        <p>Uma visão geral do seu pedido</p>
+      </div>
+
+      <div class="p-grid eventos" *ngFor="let evento of eventosInseridos">
+        <div class="p-col-12 p-md-6 p-lg-6 infos-evento">
+          <i class="pi pi-times fechar"></i>
+          <h1>asdfasdfa dfasdfasdfasfas dfasdfasdfasf</h1>
+          <p>Local do assento</p>
+          <p><strong>Data: </strong>{{evento.data}}</p>
+          <p><strong>País: </strong>{{evento.localizacao.pais}}</p>
+          <p><strong>Cidade: </strong>{{evento.localizacao.cidade}}</p>
+          <p><strong>Local: </strong>{{evento.localizacao.local}}</p>
+          <hr>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-lg-6 checkout">
+          <div class="quantidade">
+            <app-select [itens]="[1,2,3,4,5]" [id]="'quantidade'"></app-select>
+          </div>
+          <div class="excluir">
+            <a>Excluir</a>
+          </div>
+          <h1 class="subtotal">R$ {{150 * quantidade }}</h1>
+        </div>
+      </div>
+
+      <div class="p-grid totalizacao">
+        <div class="p-col-12 p-md-12 p-lg-12">
+          <div class="p-grid">
+            <div class="p-col-12 p-md-6 p-lg-6">
+              <div>
+                <h5>Custo do serviço</h5>
+                <h5>R$ 5,00</h5>
+              </div>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-6" >
+              <div style="width: 100%">
+                <h3>Total a pagar</h3>
+                <h2>R$ 1505,00</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-12">
+          <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
+              <button label="Finalizar Pedido"
+                      pButton class="ui-button-primary"
+                      style="display: block; margin: 0 auto"
+                      (click)="finalizarPedido()">
+              </button>
+            </div>
+            <div class="p-col-12 p-md-12 p-lg-12">
+              <a style="text-align: center; display: block" routerLink="/">Continuar comprando</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </ng-template>
+</section>
+

@@ -1,0 +1,44 @@
+<section class="container">
+<p-card>
+  <div class="login">
+    <form class="p-grid p-justify-center">
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <div class="titulo">Login</div>
+      </div>
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <app-input-texto id="login"
+                         [tipo]="'text'"
+                         required="true"
+                         [label]="'Login'"
+                         [(ngModel)]="cliente.login.usuario" name="usuario">
+        </app-input-texto>
+      </div>
+
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <app-input-texto id="senha"
+                         [tipo]="'password'"
+                         required="true"
+                         [label]="'Senha'"
+                         [(ngModel)]="cliente.login.senha" name="senha">
+        </app-input-texto>
+      </div>
+
+      <div class="p-col" >
+        <button label="Login" pButton class="ui-button-primary" style="margin: 0 auto; display: block"></button>
+      </div>
+
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <div style="text-align: center">
+          <a routerLink="/conta/resetar-senha">Recuperar Senha</a>
+        </div>
+        <hr>
+
+        <div style="text-align: center">
+          <span>Ainda não possuo conta </span><a routerLink="/conta/criar-conta">Criar uma</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</p-card>
+
+</section>

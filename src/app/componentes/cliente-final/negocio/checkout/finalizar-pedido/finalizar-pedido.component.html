@@ -1,0 +1,118 @@
+<section class="container">
+  <h1>Finalizar pedido</h1>
+  <section class="p-grid finalizar-pedido">
+    <div class="p-col-12 p-md-6 p-lg-4">
+      <div class="passo-pedido">
+        <h1>Meus detalhes</h1>
+        <form>
+          <app-input-texto id="nome"
+                           [placeholder]="'Nome Completo'"
+                           [label]="'Nome'"
+                           required="true"
+                           [(ngModel)]="cliente.nome" name="nome">
+          </app-input-texto>
+
+          <app-input-texto id="email"
+                           [placeholder]="'E-mail'"
+                           [label]="'E-mail'"
+                           required="true"
+                           [(ngModel)]="cliente.email" name="email">
+          </app-input-texto>
+
+          <app-input-mask [id]="'celular'"
+                          [mask]="'+99 (99)-9999-9999'"
+                          [label]="'Número celular'"
+                          [placeholder]="'(99)-9999-9999'">
+          </app-input-mask>
+
+          <app-select [itens]="paises"
+                      [placeholder]="'País'"
+                      [label]="'País'"
+                      [id]="pais">
+          </app-select>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="p-col-12 p-md-6 p-lg-4">
+      <div class="passo-pedido">
+        <h1>Método de Pagamento</h1>
+        <ul class="metodos-pag">
+          <li>
+            <p-radioButton name="group1"
+                           value="Boleto Bancário"
+                           label="Boleto Bancário"
+                           [(ngModel)]="metodoPagamento"
+                           inputId="boleto">
+            </p-radioButton>
+          </li>
+          <li>
+            <p-radioButton name="group1"
+                           value="Visa"
+                           label="Visa"
+                           [(ngModel)]="metodoPagamento"
+                           inputId="visa">
+            </p-radioButton>
+          </li>
+          <li>
+            <p-radioButton name="group1"
+                           value="Mastercard"
+                           label="Mastercard"
+                           [(ngModel)]="metodoPagamento"
+                           inputId="mastercard">
+            </p-radioButton>
+          </li>
+          <li>
+            <p-radioButton name="group1"
+                           value="PayPal"
+                           label="PayPal"
+                           [(ngModel)]="metodoPagamento"
+                           inputId="PayPal">
+            </p-radioButton>
+          </li>
+          <li>
+            <p-radioButton name="group1"
+                           value="Apple Pay"
+                           label="Apple Pay"
+                           [(ngModel)]="metodoPagamento"
+                           inputId="applePay">
+            </p-radioButton>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-md-12 p-lg-4">
+      <p-card>
+        <div class="passo-pedido">
+          <h1>Confirmar</h1>
+          <div>
+            <div class="infos-evento">
+              <div class="conteudo-horizontal">
+                <h4>Custo do serviço</h4>
+                <h4>R$ 5,00</h4>
+              </div>
+              <hr>
+
+              <div class="conteudo-horizontal">
+                <h3>Total a pagar</h3>
+                <h2>R$ 5,00</h2>
+              </div>
+
+              <div class="p-field p-grid">
+                <button label="Finalizar Pedido"
+                        pButton class="ui-button-primary largura-total"></button>
+              </div>
+
+              <a routerLink="/">Continuar comprando</a>
+
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+  </section>
+
+</section>

@@ -1,0 +1,40 @@
+<nav>
+
+    <ul class="navigation" (scroll)="onScroll()"
+        [className]="colorido ? 'navigation colorido' : 'navigation'">
+
+      <li class="toggle">
+        <i class="pi pi-bars" (click)="display = true"></i>
+        <p-sidebar [(visible)]="display"
+                   [baseZIndex]="300"
+                   [style]="{width:'100%', padding: '2em'}">
+          <ul class="menu-mobile">
+            <li *ngFor="let item of items"
+              (click)="goTo(item.routerLink)">{{item.label}}</li>
+          </ul>
+        </p-sidebar>
+      </li>
+
+      <li class="logo" routerLink=""><span>EVENTOS D'AHORA</span></li>
+
+      <li class="item" routerLink="/dashboard/home">
+        Criar evento
+      </li>
+      <li class="item" routerLink="/conta/login">
+        Minha conta
+      </li>
+      <li class="carrinho" routerLink="/checkout/carrinho">
+        <i class="pi pi-shopping-cart" style="font-size: 1.5em;"></i>
+      </li>
+    </ul>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  <app-rodape></app-rodape>
+</footer>
+
+

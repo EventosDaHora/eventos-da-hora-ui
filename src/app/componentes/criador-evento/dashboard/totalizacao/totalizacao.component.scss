@@ -1,0 +1,36 @@
+.totalizacao {
+  display: flex;
+  justify-content: center;
+
+  .icone, .desc {
+    padding: .5em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+
+  .icone {
+    background-color: #ffa000;
+    padding: 0 2em;
+    font-size: 2em;
+  }
+
+  .desc {
+    background-color: #FFB300;
+    width: 100%;
+
+    .titulo {
+      font-size: 20px;
+      display: inline-block;
+      margin: 4px 0 10px 0;
+      color: #ffffff;
+    }
+
+    .valor {
+      color: #ffffff;
+      font-size: 36px;
+    }
+  }
+}

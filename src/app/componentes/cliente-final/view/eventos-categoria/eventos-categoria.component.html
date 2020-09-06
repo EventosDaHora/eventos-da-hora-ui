@@ -1,0 +1,22 @@
+<app-banner [evento]="evento"></app-banner>
+<section class="container">
+  <app-filtro-evento></app-filtro-evento>
+  <h1>Eventos</h1>
+  <div *ngFor="let i of [1,2,3,4,5]" class="row ui-shadow">
+    <div class="upper">
+      <div class="data-horario">
+          <p> Sexta, 25 de Junto de 2021 </p>
+          <p>12:oo PM</p>
+      </div>
+
+      <div class="info-evento">
+          <p>Nome Evento</p>
+      </div>
+    </div>
+
+    <div class="comprar">
+      <i class="pi pi-heart"></i>
+        <button pButton label="Comprar"></button>
+    </div>
+  </div>
+</section>

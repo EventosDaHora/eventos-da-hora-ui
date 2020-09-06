@@ -1,0 +1,77 @@
+<section class="container">
+  <p-card>
+    <section class="p-grid p-dir-col registrar">
+      <div class="p-col titulo">Nova conta</div>
+      <form style="width: 100%">
+        <div class="p-col">
+          <app-input-texto id="nome"
+                           [label]="'Nome'"
+                           required="true"
+                           [(ngModel)]="cliente.nome" name="nome">
+          </app-input-texto>
+        </div>
+
+        <div class="p-col">
+          <app-input-texto id="email"
+                           [label]="'E-mail'"
+                           required="true"
+                           [(ngModel)]="cliente.email" name="email">
+          </app-input-texto>
+        </div>
+
+        <div class="p-col">
+          <app-input-texto id="senha"
+                           [label]="'Senha'"
+                           [tipo]="'password'"
+                           required="true"
+                           [(ngModel)]="cliente.login.senha" name="senha">
+          </app-input-texto>
+        </div>
+
+        <div class="p-col">
+          <app-input-texto id="confirmaSenha"
+                           [label]="'Confirmação da senha'"
+                           [tipo]="'password'"
+                           required="true">
+          </app-input-texto>
+        </div>
+
+        <div class="p-col">
+          <app-select [label]="'País'"
+                      [id]="pais"
+                      [itens]="paises">
+          </app-select>
+        </div>
+
+        <div class="p-col">
+          <app-input-mask [id]="'celular'"
+                          [mask]="'+99 (99)-9999-9999'"
+                          [label]="'Número celular'">
+          </app-input-mask>
+        </div>
+
+        <div class="p-col">
+          <button pButton label="Registrar"
+                  class="ui-button-primary"
+                  style="margin: 0 auto; display: block"></button>
+        </div>
+      </form>
+
+      <div class="p-col">
+        <hr>
+
+        <div style="text-align: center" class="p-grid">
+          <div class="p-col-12 p-md-12 p-lg-6">
+            <span>Já possui uma conta? </span>
+          </div>
+          <div class="p-col-12 p-md-12 p-lg-6">
+            <a routerLink="/conta/login">Realizar login</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </p-card>
+</section>

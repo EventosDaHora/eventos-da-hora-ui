@@ -1,0 +1,38 @@
+<p-accordion [multiple]="true" *ngIf="ingresso.tipos.length > 0">
+  <p-accordionTab *ngFor="let tipo of ingresso.tipos">
+    <p-header>
+      {{ tipo.descricao }} <span style="float: right">
+      <i class="pi pi-times" style="font-size: .8em"></i> Remover</span>
+    </p-header>
+
+    <form class="p-grid">
+      <div class="p-col-12 p-md-4 p-lg-4">
+        <app-input-texto id="preco"
+                         [label]="'Preço'"
+                         [placeholder]="'Preço ingresso'"
+                         [tipo]="'number'"
+                         [(ngModel)]="tipo.preco" name="preco"
+                         required="true">
+        </app-input-texto>
+      </div>
+
+      <div class="p-col-12 p-md-4 p-lg-4">
+        <app-input-texto id="quantidade"
+                         [label]="'Quantidade'"
+                         [placeholder]="'Quantidade'"
+                         [tipo]="'number'"
+                         [(ngModel)]="tipo.quantidade" name="quantidade"
+                         required="true">
+        </app-input-texto>
+      </div>
+
+      <div class="p-col-12 p-md-4 p-lg-4">
+        <br>
+        <div class="meia">
+          <p-inputSwitch [(ngModel)]="ingresso.meiaEntrada" name="meia" required="true"></p-inputSwitch>
+          <p>Permite meia entrada</p>
+        </div>
+      </div>
+    </form>
+  </p-accordionTab>
+</p-accordion>

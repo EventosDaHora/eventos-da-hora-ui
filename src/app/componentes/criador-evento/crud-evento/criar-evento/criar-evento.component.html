@@ -1,0 +1,141 @@
+<form class="p-grid">
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <h1>Criar Evento</h1>
+    <hr>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <h2>Informações gerais</h2>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <app-input-texto id="tituloEvento"
+                     [label]="'Título'"
+                     [placeholder]="'Título do Evento'"
+                     [tipo]="'text'"
+                     required="true"
+                     [(ngModel)]="evento.nome" name="tituloEvento">
+    </app-input-texto>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <app-input-texto id="oraganizador"
+                     [label]="'Organizador'"
+                     [placeholder]="'Nome do organizador'"
+                     [tipo]="'text'"
+                     required="true"
+                     [(ngModel)]="evento.organizador" name="oraganizador">
+    </app-input-texto>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <app-input-texto id="qtdMinima"
+                     label="Quantidade mínima"
+                     tipo="number"
+                     [(ngModel)]="evento.qtdMinima" name="qtdMinima"
+                     required="true">
+    </app-input-texto>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <app-input-texto id="qtdMaxima"
+                     label="Quantidade máxima"
+                     tipo="number"
+                     required="true"
+                     [(ngModel)]="evento.qtdMaxima" name="qtdMaxima">
+    </app-input-texto>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <div class="p-grid">
+      <div class="p-col-12 p-md-6 p-lg-6">
+        <app-select [label]="'Tipo'"
+                    [placeholder]="'Tipo do evento'"
+                    [itens]="categorias"
+                    [(ngModel)]="evento.categoria">
+        </app-select>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-6">
+        <div class="menor">
+          <p-toggleButton [(ngModel)]="evento.menorDesacompanhado"
+                         name="menor"
+                         onLabel="Sim"
+                         offLabel="Não"
+                         required="true">
+          </p-toggleButton>
+
+          <p>Permite menor desacompanhado?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <div class="p-grid">
+      <div class="p-col-12 p-md-6 p-lg-6">
+        <app-input-calendar id="dataEvento"
+                            label="Data"
+                            placeholder="Data do Evento"
+                            required="true">
+        </app-input-calendar>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-6">
+        <app-input-calendar id="horaEvento"
+                            [label]="'Horário'"
+                            [placeholder]="'O evento começa às'"
+                            [required]="true"
+                            [somenteHorario]="true">
+        </app-input-calendar>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <hr>
+    <h2>Local</h2>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <div class="p-grid">
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <app-mapa-local></app-mapa-local>
+      </div>
+
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <p><strong>Local Selecionado:</strong> Papua Nova Guiné</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <hr>
+    <h2>Mapa do Ambiente</h2>
+    <p>Usuário vai poder montar mapa do ambiente do evento</p>
+    <img src="assets/mapa-ambiente.png" alt="" style="margin: 0 auto; display: flex">
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <hr>
+    <h2>Imagens</h2>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+   <app-imagem-evento></app-imagem-evento>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <hr>
+    <div class="criar-evento">
+      <a (click)="mostrarPreview()">Preview da página do evento</a>
+      <p-checkbox label="Concordo com os termos de uso"
+                  name="concordar">
+      </p-checkbox>
+      <button label="Criar evento" pButton class="ui-button-primary largura-total"></button>
+    </div>
+
+  </div>
+</form>
+

@@ -1,0 +1,15 @@
+.mapa {
+  height: 400px;
+  width: 100%;
+}
+
+:host::ng-deep {
+  .ol-viewport {
+    ::ng-deep {
+      .ol-unselectable .ol-layers {
+        z-index: 1;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,96 @@
+.container {
+  padding: 3em 0 3em 0;
+}
+
+.filtro {
+  display: none;
+}
+
+.escolha {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+
+  .ingresso, .assento, .local-evento {
+    width: 100%;
+    margin: 0 .5em 3em .5em;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .local-evento {
+    height: 200px;
+  }
+
+  .ingresso > h1 {
+    padding-left: 1em;
+  }
+
+  .assento {
+    height: auto;
+    order: -1;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .container {
+    padding: .1em 4em;
+  }
+
+
+  .filtro {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    padding-left: 0;
+
+    li {
+      padding: .7em;
+      text-decoration: none;
+      border-radius: 7px;
+      align-self: center;
+
+      .select {
+        width: 150px;
+      }
+
+      &:first-child {
+        padding-left: 0;
+        font-size: 1.5em;
+      }
+
+      &:last-child {
+        margin-left: auto;
+        padding-right: 0;
+      }
+    }
+  }
+
+  li:first-child:hover, li:last-child:hover  {
+    background: transparent;
+    pointer-events: none;
+    color: inherit;
+    cursor: none;
+  }
+
+
+  .escolha {
+    justify-content: space-between;
+    max-width: 1000px;
+
+    .ingresso, .assento {
+      width: calc(50% - 27px);
+      margin-bottom: 0;
+    }
+
+    .assento {
+      order: 0;
+      margin-bottom: 1em;
+    }
+  }
+}

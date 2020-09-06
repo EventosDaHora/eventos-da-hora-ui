@@ -1,0 +1,82 @@
+  <div class="registrar p-grid">
+    <div class="titulo">Nova conta</div>
+    <form>
+      <div class=" p-grid p-dir-col">
+        <div class="p-col">
+          <label class="p-col-fixed">Nome</label>
+          <app-input-texto id="nome"
+                           [placeholder]="'Nome Completo'"
+                           required="true"
+                           [(ngModel)]="evento.nome" name="nome">
+          </app-input-texto>
+        </div>
+      </div>
+
+      <div class=" p-grid p-dir-col">
+        <div class="p-col">
+          <label for="local" class="p-col-fixed">Local</label>
+          <app-input-texto id="local"
+                           placeholder="Local"
+                           required="true"
+                           [(ngModel)]="evento.localizacao.local" name="local">
+          </app-input-texto>
+        </div>
+      </div>
+
+      <div class=" p-grid p-dir-col">
+        <div class="p-col">
+          <label for="senha" class="p-col-fixed">Senha</label>
+          <app-input-texto id="senha"
+                           [placeholder]="'Senha'"
+                           [tipo]="'password'"
+                           required="true"
+                           [(ngModel)]="cliente.login.senha" name="senha">
+          </app-input-texto>
+
+          <app-input-texto id="confirmaSenha"
+                           [placeholder]="'Confirmação da senha'"
+                           [tipo]="'password'"
+                           required="true"
+                           [(ngModel)]="cliente.login.senha" name="senha">
+          </app-input-texto>
+        </div>
+      </div>
+
+      <div class=" p-grid p-dir-col">
+        <div class="p-col">
+          <label for="pais" class="p-col-fixed">País</label>
+          <ng-select [items]="paises"
+                     placeholder="País"
+                     [clearable]="false"
+                     [searchable]="false"
+                     [(ngModel)]="pais"
+                     name="pais"
+                     id="pais"
+                     class="select">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class=" p-grid p-dir-col">
+        <label class="p-col-fixed">Número celular</label>
+        <div class="p-col">
+          <app-input-mask [id]="'celular'"
+                          [mask]="'+99 (99)-9999-9999'"
+                          [placeholder]="'(99)-9999-9999'">
+          </app-input-mask>
+        </div>
+      </div>
+
+      <div class=" p-grid p-dir-col">
+        <div class="p-col">
+          <button pButton label="Registrar" class="ui-button-primary largura-total"></button>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    <div style="text-align: center">
+      <span>Já possui uma conta? </span><a routerLink="/login">Realizar login</a>
+    </div>
+  </div>

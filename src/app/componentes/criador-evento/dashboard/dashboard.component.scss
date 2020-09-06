@@ -1,0 +1,36 @@
+.menu-lateral {
+  padding: 1.5em;
+}
+
+:host ::ng-deep {
+  .ui-sidebar-top {
+    height: auto;
+  }
+
+  .ui-menubar {
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    .ui-menubar-custom {
+      margin-left: auto;
+    }
+
+    .ui-menuitem {
+      outline: none;
+
+      .ui-menuitem-link {
+        padding: 2em 1.5em .9em 1.5em;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.custom {
+  display: flex;
+}

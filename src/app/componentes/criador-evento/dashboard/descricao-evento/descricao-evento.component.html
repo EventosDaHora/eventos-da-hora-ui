@@ -1,0 +1,33 @@
+<p-card header="{{cabecalho}}">
+  <hr>
+  <div class="descricao-container">
+    <div class="essa">
+      <div>Nessa Semana</div>
+      <div>R$ 5000.00</div>
+    </div>
+
+    <div class="passada">
+      <div>Semana Passada</div>
+      <div>R$ 5000.00</div>
+    </div>
+  </div>
+
+  <div class="registros">
+    <ul>
+      <li *ngFor="let i of [1,2,3,4]">
+        <div class="descricao">
+          <img src="/assets/rick.jpg" alt="">
+          <div>
+            <span><strong>Rick Sanchez</strong></span>
+            <span>Nome evento</span>
+          </div>
+
+          <div style="text-align: right">
+            <span>Ingresso Vendido</span>
+            <span>165 / 300</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</p-card>

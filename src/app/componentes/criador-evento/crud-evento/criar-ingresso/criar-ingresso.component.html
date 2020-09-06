@@ -1,0 +1,56 @@
+<form class="p-grid">
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <h1>Criar Ingresso</h1>
+    <hr>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <app-select [label]="'Evento'"
+                [placeholder]="'Selecione um evento'"
+                [itens]="nomesEvento"
+                [(ngModel)]="evento" name="evento">
+    </app-select>
+  </div>
+
+  <div class="p-col-12 p-md-4 p-lg-4">
+    <div class="p-grid">
+      <div class="p-col-12 p-md-12 p-lg-12">
+        <p-card>
+          <h2>Arquibancada</h2>
+          <app-input-texto id="preco"
+                           [label]="'Preço'"
+                           [placeholder]="'Preço ingresso'"
+                           [tipo]="'number'"
+                           required="true">
+          </app-input-texto>
+
+          <app-input-texto id="quantidade"
+                           [label]="'Quantidade'"
+                           [placeholder]="'Quantidade'"
+                           [tipo]="'number'"
+                           required="true">
+          </app-input-texto>
+
+          <p-toggleButton onLabel="Sim"
+                          offLabel="Não">
+          </p-toggleButton>
+          <p style="color: black; display: inline; padding-left: .5em">Permite meia entrada?</p>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-col-12 p-md-8 p-lg-8">
+    <p-card>
+      <img src="assets/mapa-ambiente.png" style="margin: 0 auto; display: flex">
+    </p-card>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <hr>
+      <button label="Criar ingressos" pButton class="ui-button-primary largura-total"></button>
+
+  </div>
+
+</form>
+

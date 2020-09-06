@@ -1,0 +1,25 @@
+<p-table [value]="eventos">
+  <ng-template pTemplate="caption">
+    Eventos Cadastrados
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Cidade</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Valor</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-evento>
+    <tr>
+      <td>{{evento.nome}}</td>
+      <td>{{evento.localizacao.pais}}</td>
+      <td>{{evento.localizacao.cidade}}</td>
+      <td>{{evento.localizacao.local}}</td>
+      <td>{{evento.data}}</td>
+      <td>{{2710}}</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,19 @@
+<p-sidebar [(visible)]="display"
+           [baseZIndex]="10000"
+           position="top"
+           [dismissible]="false"
+           [modal]="false"
+           [showCloseIcon]="false">
+
+  <p-menubar [model]="items">
+    <div class="custom">
+      <input type="text" pInputText placeholder="Search">
+      <button pButton label="Logout"
+              icon="pi pi-power-off"
+              style="margin-left:.25em"
+              routerLink="/"></button>
+    </div>
+  </p-menubar>
+</p-sidebar>
+
+<router-outlet></router-outlet>

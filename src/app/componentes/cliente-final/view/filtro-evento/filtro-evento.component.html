@@ -1,0 +1,74 @@
+  <div class="selects">
+    <ng-container *ngFor="let filtro of filtros; let last = last; let first = first; let index = index">
+      <div class="select">
+        <div class="titulo" (click)="toggle(filtro)">{{filtro.categoria}}
+          <i class="pi pi-chevron-down"></i>
+        </div>
+        <div *ngIf="filtro.mostrarConteudo">
+          <div class="dropdown ui-shadow" [ngStyle]="{'float': index === 3 || index === 4 ? 'right' : 'unset' }">
+            <div *ngIf="first">
+              <div class="calendario">
+                <div class="data-inicio">
+                  <app-input-calendar id="dataInicial"
+                                      required="true"
+                                      inline="true">
+                  </app-input-calendar>
+                </div>
+
+                <div class="data-fim">
+                  <app-input-calendar id="dataFinal"
+                                      required="true"
+                                      inline="true">
+                  </app-input-calendar>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!first && !last">
+              <div class="multiSelect">
+                <div class="busca">
+                  <app-input-texto></app-input-texto>
+                </div>
+
+                <div class="opcoes">
+                  <ul>
+                    <li *ngFor="let conteudo of filtro.conteudoCheckbox">
+                      <p-checkbox label="{{conteudo}}"
+                                  name="grupo{{index}}">
+                      </p-checkbox>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="actions">
+                  <a (click)="toggle(filtro)">Cancelar</a>
+                  <button pButton label="Aplicar"></button>
+                </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="last">
+              <div class="multiSelect">
+                <div class="busca-last">
+                  <app-input-texto label="De" tipo="number" [(ngModel)]="filtro.precoMinimo"></app-input-texto>
+                  <app-input-texto label="Até" [(ngModel)]="filtro.precoMaximo"></app-input-texto>
+                </div>
+
+                <div class="actions">
+                  <a (click)="toggle(filtro)">Cancelar</a>
+                  <button pButton label="Aplicar"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </ng-container>
+
+    <ng-template>
+    </ng-template>
+  </div>
+
+

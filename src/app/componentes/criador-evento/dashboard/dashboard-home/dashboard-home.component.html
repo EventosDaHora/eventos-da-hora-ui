@@ -1,0 +1,130 @@
+<section class="dashboard-container">
+
+  <div class="p-grid">
+    <div class="p-col-12 p-md-4 p-lg-4">
+      <app-card-analytics [header]="'Vendas'"
+                          [valorEstatistica]="9846.44"
+                          [tipoGrafico]="graficoProgresso"
+                          [periodo]="'semana'">
+      </app-card-analytics>
+    </div>
+    <div class="p-col-12 p-md-4 p-lg-4">
+      <app-card-analytics [header]="'Visualizações'"
+                          [valorEstatistica]="9846.44"
+                          [tipoGrafico]="graficoProgresso"
+                          [periodo]="'dia'">
+      </app-card-analytics>
+    </div>
+    <div class="p-col-12 p-md-4 p-lg-4">
+      <app-card-analytics [header]="'Usuários'"
+                          [valorEstatistica]="9846.44"
+                          [tipoGrafico]="graficoProgresso"
+                          [periodo]="'dia'">
+      </app-card-analytics>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <app-totalizacao titulo="Tarefas" [valor]="'60'"></app-totalizacao>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <app-totalizacao titulo="Compras" [valor]="'2600'"></app-totalizacao>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <app-totalizacao titulo="Problemas" [valor]="'22'"></app-totalizacao>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <app-totalizacao titulo="Mensagens" [valor]="'40'"></app-totalizacao>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12 p-md-12 p-lg-6">
+      <app-card-analytics header="Compras por país"
+                          [valorEstatistica]="9846"
+                          [altura]="374"
+                          [tipoGrafico]="graficoLinha"
+                          [periodo]="'ano'">
+      </app-card-analytics>
+    </div>
+
+    <div class="p-col-12 p-md-12 p-lg-6">
+      <p-card>
+        <img alt="" src="assets/grafico-mapa.png" style="width: 100%">
+      </p-card>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12 p-md-3 p-lg-3">
+      <app-card-analytics header="Receita"
+                          [valorEstatistica]="9846"
+                          [altura]="200"
+                          [tipoGrafico]="graficoDoughnut"
+                          [periodo]="'ano'">
+      </app-card-analytics>
+    </div>
+
+    <div class="p-col-12 p-md-3 p-lg-3">
+      <app-card-analytics header="Taxas"
+                          [valorEstatistica]="350"
+                          [altura]="200"
+                          [tipoGrafico]="graficoDoughnut"
+                          [periodo]="'ano'">
+      </app-card-analytics>
+    </div>
+
+    <div class="p-col-12 p-md-3 p-lg-3">
+      <app-card-analytics header="Compras por país"
+                          [valorEstatistica]="9846"
+                          [altura]="200"
+                          [tipoGrafico]="graficoDoughnut"
+                          [periodo]="'ano'">
+      </app-card-analytics>
+    </div>
+
+    <div class="p-col-12 p-md-3 p-lg-3">
+      <app-card-analytics header="Compras por país"
+                          [valorEstatistica]="9846"
+                          [altura]="200"
+                          [tipoGrafico]="graficoDoughnut"
+                          [periodo]="'ano'">
+      </app-card-analytics>
+    </div>
+
+  </div>
+
+  <div class="p-grid ">
+    <div class="p-col-12 p-md-12 p-lg-12">
+      <app-calendario-eventos></app-calendario-eventos>
+    </div>
+  </div>
+
+
+  <div class="p-grid p-align-stretch">
+   <div class="p-col-12 p-md-12 p-lg-4">
+     <app-descricao-evento cabecalho="Compras Recentes">
+     </app-descricao-evento>
+   </div>
+
+    <div class="p-col-12 p-md-12 p-lg-4">
+      <app-descricao-evento cabecalho="Próximos Eventos">
+      </app-descricao-evento>
+    </div>
+
+    <div class="p-col-12 p-md-12 p-lg-4">
+      <app-descricao-evento cabecalho="Marcados como Favoritos">
+      </app-descricao-evento>
+    </div>
+  </div>
+
+  <div class="p-grid p-justify-center p-align-stretch">
+    <div class="p-col-12 p-col">
+      <app-listagem-evento [eventos]="eventos"></app-listagem-evento>
+    </div>
+  </div>
+</section>

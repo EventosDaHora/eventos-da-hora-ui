@@ -1,0 +1,27 @@
+<div>
+  <section class="ingresso">
+    <p-header>
+      <div class="preco">
+        <div class="up">
+          <h1>Local do Assento</h1>
+        </div>
+        <div class="down">
+          <h1>R$ 150,00</h1>
+        </div>
+      </div>
+    </p-header>
+
+    <div class="qtd-ingressos">
+      <ng-select [items]="[1,2,3,4,5]"
+                 placeholder="Ingressos"
+                 [clearable]="false"
+                 [(ngModel)]="qtd"
+                 name="qtd"
+                 class="select">
+      </ng-select>
+      <button pButton label="Comprar" routerLink="/checkout/carrinho"></button>
+    </div>
+  </section>
+
+</div>
+

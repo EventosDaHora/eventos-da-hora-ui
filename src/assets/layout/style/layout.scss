@@ -1,0 +1,97 @@
+@import '../../mytheme/variables';
+/*
+@mixin shadow($value) {
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    box-shadow: $value;
+}
+
+body {
+    font-family: $fontFamily;
+    color: $primaryColor;
+    font-size: 14px;
+    background-color: #1a1c1d;
+    padding: 0;
+    margin: 0;
+
+    &.layout-scroll-block {
+        overflow: hidden;
+    }
+
+  h1, p, a {
+    text-decoration: none;
+  }
+
+  li:hover {
+    background-color: #ad4414;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+.card, .ui-card {
+    border-radius: 3px;
+    background-color: #0D0E0E;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    &.card-w-title, &.card-title {
+        padding-bottom: 16px;
+
+    }
+
+  &.ui-card-body {
+    .ui-card-title {
+      color: $textColor;
+    }
+  }
+
+    &.no-gutter {
+        margin-bottom: 0;
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: 400;
+        margin: 24px 0 12px 0;
+
+        &:first-child {
+            margin-top: 0px;
+        }
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    h4 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+.ui-sidebar {
+  background-color: #0D0E0E;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+}
+
+:host::ng-deep {
+  .ui-panel-titlebar {
+    background-color: #0D0E0E;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  }
+
+}
+
+.ui-table {
+
+}
+*/
+

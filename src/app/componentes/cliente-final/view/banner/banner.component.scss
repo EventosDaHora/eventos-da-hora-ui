@@ -1,0 +1,111 @@
+.banner{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  color: white;
+
+  .imagem-evento {
+    filter: brightness(65%);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+
+  .infos-evento {
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    width: 100%;
+
+    h1, p, a {
+      text-align: center;
+      margin: 0;
+      padding: 0 ;
+      color: white;
+    }
+
+    a:not(:first-child) {
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a:not(:first-child):hover {
+      text-decoration: none;
+    }
+
+   .input {
+      display: none;
+    }
+  }
+}
+
+@media all and (min-width: 600px) {
+  .banner {
+    .imagem-evento {
+      width: 100%;
+    }
+
+    .infos-evento {
+      transform: translate(-50%, 0%);
+
+
+      p {
+        display: block;
+          font-size: 1.2em;
+      }
+
+      a {
+          font-size: 1.2em;
+          h1 {
+            font-size: 3.375em;
+          }
+      }
+      .input {
+        display: block;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+
+/* Desktop */
+@media all and (min-width: 900px) {
+
+  .banner {
+    width: 100%;
+
+    .imagem-evento {
+      max-height: 500px;
+    }
+
+    .infos-evento {
+      bottom: 10%;
+      transform: translate(-50%, -10%);
+
+      h1 {
+        font-size: 4em;
+      }
+
+      p {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+
+}
+

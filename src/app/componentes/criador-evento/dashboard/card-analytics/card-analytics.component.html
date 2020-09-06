@@ -1,0 +1,18 @@
+<p-card header="{{getTitulo()}}" styleClass="ui-card-shadow">
+  <p-header>
+    <div class="cabecalho" *ngIf="header">
+      {{header}}
+      <span>+ 60%</span>
+    </div>
+  </p-header>
+
+  <p-progressBar [value]="60" *ngIf="graficoProgresso"></p-progressBar>
+
+  <p-chart type="{{tipoGrafico.valueOf()}}"
+           [data]="data"
+           [height]="altura"
+           (onDataSelect)="selectData($event)"
+           *ngIf="!graficoProgresso">
+  </p-chart>
+
+</p-card>

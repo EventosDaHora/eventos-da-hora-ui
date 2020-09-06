@@ -1,0 +1,32 @@
+label {
+  color: white;
+  font-size: .8em;
+  margin-left: 1em;
+}
+
+:host::ng-deep {
+  .ng-select {
+    margin: .5em;
+
+    ::ng-deep {
+      .ng-select.ng-select-single, .ng-select-container {
+        height: 44px;
+        font-size: 14px;
+        color: #d1cec9;
+        background: #585858;
+        padding: 1em;
+        border: 1px solid #3e4446;
+        transition: border-color 0.3s;
+      }
+
+      .ng-option{
+        background: #181a1b;
+        color: #d1cec9;
+      }
+    }
+
+
+  }
+
+
+}

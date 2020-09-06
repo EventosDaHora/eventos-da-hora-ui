@@ -1,0 +1,14 @@
+.ui-float-label {
+  margin: .5em;
+  label {
+    color: white;
+  }
+}
+
+
+:host::ng-deep {
+  .ui-inputtext {
+    width: 100%;
+    padding: .7em;
+  }
+}

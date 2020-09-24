@@ -6,7 +6,7 @@
                 <div class="p-col">
 
                   <span class="ui-float-label">
-                    <input type="text" class="ui-inputtext" id="newPassword" formControlName="newPassword">
+                    <input type="password" class="ui-inputtext" id="newPassword" formControlName="newPassword">
                     <label for="newPassword" *ngIf="!resourceForm.get('newPassword').value">Nova senha</label>
                   </span>
                     <app-form-field-error [form-control]="resourceForm.get('newPassword')"></app-form-field-error>
@@ -15,7 +15,7 @@
 
                 <div class="p-col">
                   <span class="ui-float-label">
-                    <input type="text" class="ui-inputtext" id="confirmPassword" formControlName="confirmPassword">
+                    <input type="password" class="ui-inputtext" id="confirmPassword" formControlName="confirmPassword">
                     <label for="confirmPassword"
                            *ngIf="!resourceForm.get('confirmPassword').value">Confirmar senha</label>
                   </span>

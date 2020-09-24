@@ -7,67 +7,65 @@ import {AuthService} from "../../../../../infra/security/auth.service";
 import {Validators} from "@angular/forms";
 import {UserCreatePasswordService} from "../../../../../services/user-create-password.service";
 import {UserCreatePassword} from "../../../../../dominio/user-create-password.model";
+import {NotificationService} from "../../../../../services/notification.service";
 
 @Component({
-  selector: 'app-criar-senha',
-  templateUrl: './criar-senha.component.html',
-  styleUrls: ['./criar-senha.component.scss']
+    selector: 'app-criar-senha',
+    templateUrl: './criar-senha.component.html',
+    styleUrls: ['./criar-senha.component.scss']
 })
 // @ts-ignore
 export class CriarSenhaComponent extends BaseFormComponent implements OnInit {
 
-  userCreatePassword: UserCreatePassword;
-  idUser: number;
-  dsToken: string;
+    userCreatePassword: UserCreatePassword;
+    idUser: number;
+    dsToken: string;
 
-  constructor(
-      private router: Router,
-      private authService: AuthService,
-      protected route: ActivatedRoute,
-  protected userCreatePasswordService: UserCreatePasswordService,
-      //TODO implementar serviço de alerta
-      // private alertServiceService: AlertService,
-      protected injector: Injector) {
-    super(injector);
+    constructor(
+        private router: Router,
+        private authService: AuthService,
+        protected route: ActivatedRoute,
+        protected userCreatePasswordService: UserCreatePasswordService,
+        private notificationService: NotificationService,
+        protected injector: Injector) {
+        super(injector);
 
-    this.idUser = this.route.snapshot.params.id;
-    this.dsToken = this.route.snapshot.params.dsToken;
-  }
-
-  ngOnInit(): void {
-    this.userCreatePassword = new UserCreatePassword();
-
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['conta/dashboard-usuario']);
+        this.idUser = this.route.snapshot.params.id;
+        this.dsToken = this.route.snapshot.params.dsToken;
     }
 
-    this.buildResourceForm();
-  }
+    ngOnInit(): void {
+        this.userCreatePassword = new UserCreatePassword();
 
-  protected buildResourceForm() {
-    this.resourceForm = this.formBuilder.group({
-      idUser: [null],
-      newPassword: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(255)]],
-      confirmPassword: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(255)]]
-    });
-  }
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate(['conta/dashboard-usuario']);
+        }
 
-  submitForm() {
-    this.submittingForm = true;
+        this.buildResourceForm();
+    }
 
-    this.userCreatePassword.idUser = this.idUser;
-    this.userCreatePassword.newPassword = this.resourceForm.value.newPassword;
+    protected buildResourceForm() {
+        this.resourceForm = this.formBuilder.group({
+            idUser: [null],
+            newPassword: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(255)]],
+            confirmPassword: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(255)]]
+        });
+    }
 
-    this.userCreatePasswordService.createPassword(this.userCreatePassword, this.dsToken).subscribe(
-        (resourceTemp) => this.actionsForSuccess(),
-        (error) => this.actionsForError(error)
-    );
-  }
+    submitForm() {
+        this.submittingForm = true;
 
-  protected actionsForSuccess(): void {
-    //TODO criar serviço para alertService
-    // this.alertService.error('Falha ao processar sua solicitação!');
-    alert('Sucesso ao cadastrar senha.')
-    this.router.navigate(['/conta/login']);
-  }
+        this.userCreatePassword.idUser = this.idUser;
+        this.userCreatePassword.newPassword = this.resourceForm.value.newPassword;
+
+        this.userCreatePasswordService.createPassword(this.userCreatePassword, this.dsToken).subscribe(
+            (resourceTemp) => this.actionsForSuccess(),
+            (error) => this.actionsForError(error)
+        );
+    }
+
+    protected actionsForSuccess(): void {
+      this.notificationService.success('Sucesso ao cadastrar senha.', 'Nova Senha');
+      this.router.navigate(['/conta/login']);
+    }
 }

@@ -9,6 +9,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {JwtModule} from "@auth0/angular-jwt";
 import {AuthService} from "./infra/security/auth.service";
 import {AuthGuard} from "./infra/security/auth-guard.service";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
     declarations: [
@@ -20,6 +21,10 @@ import {AuthGuard} from "./infra/security/auth-guard.service";
         BrowserAnimationsModule,
         InfraModule,
         SidebarModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: true,
+        }),
 
         JwtModule.forRoot({
             config: {

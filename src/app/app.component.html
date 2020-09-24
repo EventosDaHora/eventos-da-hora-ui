@@ -17,9 +17,20 @@
 
       <li class="logo" routerLink=""><span>EVENTOS D'AHORA</span></li>
 
-      <li class="item" routerLink="/conta/login">
+      <li class="item" routerLink="/conta/login" *ngIf="!authService.isLoggedIn()">
         Minha conta
       </li>
+
+
+      <li *ngIf="authService.isLoggedIn()" class="item" routerLink="/conta/dashboard-usuario"
+          title=" Clique aqui para visualizar sua conta">
+        Olá, {{authService.currentUser.nmUser}}
+      </li>
+
+      <li *ngIf="authService.isLoggedIn()" class="item">
+        <span (click)="authService.logout()">Logout</span>
+      </li>
+
 
       <li class="carrinho" routerLink="/checkout/carrinho">
         <i class="pi pi-shopping-cart" style="font-size: 1.5em;"></i>

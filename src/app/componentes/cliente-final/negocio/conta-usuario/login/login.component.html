@@ -17,7 +17,7 @@
 
       <div class="p-col-12 p-md-12 p-lg-12">
         <span class="ui-float-label">
-          <input type="text" class="ui-inputtext" id="password" formControlName="password">
+          <input type="password" class="ui-inputtext" id="password" formControlName="password">
           <label for="password" *ngIf="!resourceForm.get('password').value">Senha</label>
         </span>
           <app-form-field-error [form-control]="resourceForm.get('password')"></app-form-field-error>

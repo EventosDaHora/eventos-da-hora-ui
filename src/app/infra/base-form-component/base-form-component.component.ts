@@ -1,25 +1,23 @@
 import {Directive, Injector} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
-// import {AlertService} from "../validation/alert.service";
 import {WrapperApierror} from "../validation/wrapperApierror";
+import {NotificationService} from "../../services/notification.service";
 
 @Directive()
 // @ts-ignore
-export abstract class BaseFormComponent{
+export abstract class BaseFormComponent {
 
     protected serverErrorMessages: WrapperApierror;
     public resourceForm: FormGroup;
     protected formBuilder: FormBuilder;
-    //TODO criar serviço para alertService
-    // protected alertService: AlertService;
+    public notificationService: NotificationService;
     protected submittingForm = false;
 
     constructor(
         protected injector: Injector,
     ) {
         this.formBuilder = injector.get(FormBuilder);
-        //TODO criar serviço para alertService
-        // this.alertService = injector.get(AlertService);
+        this.notificationService = injector.get(NotificationService);
     }
 
     public mustShowErrorMessage(formControl: AbstractControl): boolean {
@@ -57,16 +55,14 @@ export abstract class BaseFormComponent{
         return returnMessage;
     }
 
-    public get isDisabledForm(){
+    public get isDisabledForm() {
         return (this.resourceForm.invalid || this.submittingForm);
     }
 
     protected abstract buildResourceForm(): void;
 
     protected actionsForError(error): void {
-        //TODO criar serviço para alertService
-        // this.alertService.error('Falha ao processar sua solicitação!');
-        console.log('Falha ao processar sua solicitação!')
+        this.notificationService.error('Falha ao processar sua solicitação!', 'Erro');
         this.submittingForm = false;
 
         let wrapper: WrapperApierror = error.error;

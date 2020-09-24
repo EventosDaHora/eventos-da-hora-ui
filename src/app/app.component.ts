@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Evento} from './dominio/Evento';
 import {Router} from '@angular/router';
+import {AuthService} from "./infra/security/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
 
   display = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              public authService: AuthService) {
   }
 
   evento: Evento;
@@ -26,8 +28,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      { label: 'Minha conta', routerLink: '/conta/login' },
-      { label: 'Criar Evento', routerLink: '/dashboard/home' },
+      { label: 'Minha conta', routerLink: '/conta/dashboard-usuario' },
+      // { label: 'Criar Evento', routerLink: '/dashboard/home' },
       { label: 'Show' },
       { label: 'Esporte' },
       { label: 'Cinema' },

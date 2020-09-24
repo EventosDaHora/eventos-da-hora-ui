@@ -7,6 +7,7 @@ import {AuthService} from "../../../../../infra/security/auth.service";
 import {Validators} from "@angular/forms";
 import {User} from "../../../../../dominio/user.model";
 import {UserService} from "../../../../../services/user.service";
+import {NotificationService} from "../../../../../services/notification.service";
 
 @Component({
   selector: 'app-criar-conta',
@@ -21,9 +22,7 @@ export class CriarContaComponent extends BaseFormComponent implements OnInit {
       private router: Router,
       private userService: UserService,
       private authService: AuthService,
-
-      //TODO implementar serviço de alerta
-      // private alertServiceService: AlertService,
+      private notificationService: NotificationService,
       protected injector: Injector) {
     super(injector);
   }
@@ -56,9 +55,7 @@ export class CriarContaComponent extends BaseFormComponent implements OnInit {
   }
 
   protected actionsForSuccess(): void {
-    //TODO criar serviço para alertService
-    // this.alertService.error('Falha ao processar sua solicitação!');
-    alert('Sucesso ao cadastrar! Em instantes você receberá um email com as instruções de acesso.')
+    this.notificationService.success('Sucesso ao cadastrar! Em instantes você receberá um email com as instruções de acesso.', 'Nova Conta');
     this.router.navigate(['/']);
   }
 

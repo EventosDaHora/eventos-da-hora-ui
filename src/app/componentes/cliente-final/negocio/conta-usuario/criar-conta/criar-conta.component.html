@@ -2,52 +2,31 @@
   <p-card>
     <section class="p-grid p-dir-col registrar">
       <div class="p-col titulo">Nova conta</div>
-      <form style="width: 100%">
+      <form [formGroup]="resourceForm" (submit)="submitForm()" style="width: 100%">
         <div class="p-col">
-          <app-input-texto id="nome"
-                           [label]="'Nome'"
-                           required="true"
-                           [(ngModel)]="cliente.nome" name="nome">
-          </app-input-texto>
+
+          <span class="ui-float-label">
+            <input type="text" class="ui-inputtext" id="nmUser" formControlName="nmUser">
+            <label for="nmUser" *ngIf="!resourceForm.get('nmUser').value">Nome</label>
+          </span>
+          <app-form-field-error [form-control]="resourceForm.get('nmUser')"></app-form-field-error>
+
         </div>
 
         <div class="p-col">
-          <app-input-texto id="email"
-                           [label]="'E-mail'"
-                           required="true"
-                           [(ngModel)]="cliente.email" name="email">
-          </app-input-texto>
+          <span class="ui-float-label">
+            <input type="text" class="ui-inputtext" id="dsEmail" formControlName="dsEmail">
+            <label for="dsEmail" *ngIf="!resourceForm.get('dsEmail').value">Email</label>
+          </span>
+          <app-form-field-error [form-control]="resourceForm.get('dsEmail')"></app-form-field-error>
         </div>
 
         <div class="p-col">
-          <app-input-texto id="senha"
-                           [label]="'Senha'"
-                           [tipo]="'password'"
-                           required="true"
-                           [(ngModel)]="cliente.login.senha" name="senha">
-          </app-input-texto>
-        </div>
-
-        <div class="p-col">
-          <app-input-texto id="confirmaSenha"
-                           [label]="'Confirmação da senha'"
-                           [tipo]="'password'"
-                           required="true">
-          </app-input-texto>
-        </div>
-
-        <div class="p-col">
-          <app-select [label]="'País'"
-                      [id]="pais"
-                      [itens]="paises">
-          </app-select>
-        </div>
-
-        <div class="p-col">
-          <app-input-mask [id]="'celular'"
-                          [mask]="'+99 (99)-9999-9999'"
-                          [label]="'Número celular'">
-          </app-input-mask>
+          <span class="ui-float-label">
+            <p-inputMask type="text" mask="+99 (99)-99999-9999" styleClass="ui-inputtext" id="nuCel" formControlName="nuCel"></p-inputMask>
+            <label for="nuCel" *ngIf="!resourceForm.get('nuCel').value">Número celular</label>
+          </span>
+          <app-form-field-error [form-control]="resourceForm.get('nuCel')"></app-form-field-error>
         </div>
 
         <div class="p-col">

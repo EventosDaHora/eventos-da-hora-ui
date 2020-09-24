@@ -1,0 +1,36 @@
+<section class="container">
+    <p-card>
+        <section class="p-grid p-dir-col registrar">
+            <div class="p-col titulo">Criar Senha</div>
+            <form [formGroup]="resourceForm" (submit)="submitForm()" style="width: 100%">
+                <div class="p-col">
+
+                  <span class="ui-float-label">
+                    <input type="text" class="ui-inputtext" id="newPassword" formControlName="newPassword">
+                    <label for="newPassword" *ngIf="!resourceForm.get('newPassword').value">Nova senha</label>
+                  </span>
+                    <app-form-field-error [form-control]="resourceForm.get('newPassword')"></app-form-field-error>
+
+                </div>
+
+                <div class="p-col">
+                  <span class="ui-float-label">
+                    <input type="text" class="ui-inputtext" id="confirmPassword" formControlName="confirmPassword">
+                    <label for="confirmPassword"
+                           *ngIf="!resourceForm.get('confirmPassword').value">Confirmar senha</label>
+                  </span>
+                    <app-form-field-error [form-control]="resourceForm.get('confirmPassword')"></app-form-field-error>
+                </div>
+
+                <div class="p-col">
+                    <button pButton label="Completar registro"
+                            class="ui-button-primary"
+                            style="margin: 0 auto; display: block"></button>
+                </div>
+            </form>
+
+        </section>
+
+
+    </p-card>
+</section>

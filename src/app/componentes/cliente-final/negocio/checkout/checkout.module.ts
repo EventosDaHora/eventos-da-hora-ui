@@ -11,22 +11,36 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {AccordionModule, ButtonModule, CardModule, RadioButtonModule} from 'primeng';
 import {ViewModule} from '../../view/view.module';
 import {EventosCategoriaComponent} from '../../view/eventos-categoria/eventos-categoria.component';
+import {AuthGuard} from "../../../../infra/security/auth-guard.service";
 
 
 const rotas: Routes = [
-  {path: 'carrinho', component: CarrinhoComponent},
-  {path: 'evento', component: EventoComponent},
-  {path: 'finalizar-pedido', component: FinalizarPedidoComponent},
-  {path: 'listagem-eventos', component: EventosCategoriaComponent}
+    {
+        path: 'carrinho',
+        component: CarrinhoComponent
+    },
+    {
+        path: 'evento',
+        component: EventoComponent
+    },
+    {
+        path: 'finalizar-pedido',
+        canActivate: [AuthGuard],
+        component: FinalizarPedidoComponent
+    },
+    {
+        path: 'listagem-eventos',
+        component: EventosCategoriaComponent
+    }
 ];
 
 @NgModule({
-  declarations: [
-    CarrinhoComponent,
-    FinalizarPedidoComponent,
-    EscolhaIngressoComponent,
-    EventoComponent
-  ],
+    declarations: [
+        CarrinhoComponent,
+        FinalizarPedidoComponent,
+        EscolhaIngressoComponent,
+        EventoComponent
+    ],
     imports: [
         NgSelectModule,
         AccordionModule,

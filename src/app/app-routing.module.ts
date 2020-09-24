@@ -17,6 +17,8 @@ const routes: Routes = [
     loadChildren: () => import('./componentes/cliente-final/negocio/checkout/checkout.module')
       .then(m => m.CheckoutModule)
   },
+
+    //TODO CRIADOR EVENTO, remover...
   {
     path: 'dashboard',
     loadChildren: () => import('./componentes/criador-evento/dashboard/dashboard.module')

@@ -22,7 +22,6 @@ export class CriarContaComponent extends BaseFormComponent implements OnInit {
       private router: Router,
       private userService: UserService,
       private authService: AuthService,
-      private notificationService: NotificationService,
       protected injector: Injector) {
     super(injector);
   }

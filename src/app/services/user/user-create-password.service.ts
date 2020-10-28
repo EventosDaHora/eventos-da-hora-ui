@@ -1,11 +1,11 @@
 import {Injectable, Injector} from '@angular/core';
-import {BaseResourceService} from "./base-resource.service";
+import {BaseResourceService} from "../base-resource.service";
 import {Observable} from "rxjs";
 import {catchError, map} from "rxjs/operators";
-import {environment} from "../../environments/environment";
-import {UserCreatePassword} from "../dominio/user-create-password.model";
-import {UserChangePassword} from "../dominio/user-change-password.model";
-import {User} from "../dominio/user.model";
+import {environment} from "../../../environments/environment";
+import {UserCreatePassword} from "../../dominio/user/user-create-password.model";
+import {UserChangePassword} from "../../dominio/user/user-change-password.model";
+import {User} from "../../dominio/user/user.model";
 import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({

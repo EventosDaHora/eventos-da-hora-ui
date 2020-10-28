@@ -1,9 +1,9 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseFormComponent} from "../../../../../infra/base-form-component/base-form-component.component";
 import {Validators} from "@angular/forms";
-import {UserResetPassword} from "../../../../../dominio/user-reset-password.model";
+import {UserResetPassword} from "../../../../../dominio/user/user-reset-password.model";
 import {Router} from "@angular/router";
-import {UserResetPasswordService} from "../../../../../services/user-reset-password.service";
+import {UserResetPasswordService} from "../../../../../services/user/user-reset-password.service";
 import {NotificationService} from "../../../../../services/notification.service";
 
 @Component({

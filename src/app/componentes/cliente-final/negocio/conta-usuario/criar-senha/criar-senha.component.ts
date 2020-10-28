@@ -1,12 +1,12 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseFormComponent} from "../../../../../infra/base-form-component/base-form-component.component";
-import {User} from "../../../../../dominio/user.model";
+import {User} from "../../../../../dominio/user/user.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../../../../services/user.service";
+import {UserService} from "../../../../../services/user/user.service";
 import {AuthService} from "../../../../../infra/security/auth.service";
 import {Validators} from "@angular/forms";
-import {UserCreatePasswordService} from "../../../../../services/user-create-password.service";
-import {UserCreatePassword} from "../../../../../dominio/user-create-password.model";
+import {UserCreatePasswordService} from "../../../../../services/user/user-create-password.service";
+import {UserCreatePassword} from "../../../../../dominio/user/user-create-password.model";
 import {NotificationService} from "../../../../../services/notification.service";
 
 @Component({

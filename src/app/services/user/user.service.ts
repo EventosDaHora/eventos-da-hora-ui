@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
-import {BaseResourceService} from "./base-resource.service";
-import {User} from "../dominio/user.model";
-import {environment} from "../../environments/environment";
+import {BaseResourceService} from "../base-resource.service";
+import {User} from "../../dominio/user/user.model";
+import {environment} from "../../../environments/environment";
 
 
 @Injectable({

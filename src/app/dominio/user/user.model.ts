@@ -1,4 +1,4 @@
-import {BaseResourceModel} from "./base-resource.model";
+import {BaseResourceModel} from "../base-resource.model";
 
 export class User extends BaseResourceModel {
 

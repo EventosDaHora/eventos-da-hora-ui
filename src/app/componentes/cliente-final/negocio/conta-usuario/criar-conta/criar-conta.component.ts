@@ -5,8 +5,8 @@ import {UserAuth} from "../../../../../infra/security/user-auth";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../../../infra/security/auth.service";
 import {Validators} from "@angular/forms";
-import {User} from "../../../../../dominio/user.model";
-import {UserService} from "../../../../../services/user.service";
+import {User} from "../../../../../dominio/user/user.model";
+import {UserService} from "../../../../../services/user/user.service";
 import {NotificationService} from "../../../../../services/notification.service";
 
 @Component({

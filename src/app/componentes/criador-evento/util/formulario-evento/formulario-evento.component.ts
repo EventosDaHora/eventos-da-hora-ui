@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Evento} from '../../../../dominio/Evento';
+import {Event} from '../../../../dominio/Event';
 import {EventoService} from '../../../../services/evento/evento.service';
 
 @Component({
@@ -9,7 +9,7 @@ import {EventoService} from '../../../../services/evento/evento.service';
 })
 export class FormularioEventoComponent implements OnInit {
 
-  evento: Evento;
+  evento: Event;
 
   constructor(private eventoService: EventoService) { }
 

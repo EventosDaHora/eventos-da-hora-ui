@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Evento} from '../../../../dominio/Evento';
+import {Event} from '../../../../dominio/Event';
 
 @Component({
   selector: 'app-eventos-categoria',
@@ -8,11 +8,11 @@ import {Evento} from '../../../../dominio/Evento';
 })
 export class EventosCategoriaComponent implements OnInit {
 
-  evento: Evento;
+  evento: Event;
 
   chaveDeBusca: string;
 
-  eventosPesquisadoPorChave: Evento[];
+  eventosPesquisadoPorChave: Event[];
 
   constructor() { }
 

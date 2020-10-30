@@ -1,7 +1,6 @@
-import {Login} from './Login';
 import {BaseResourceModel} from "./base-resource.model";
 
-export class Categoria extends BaseResourceModel {
+export class Category extends BaseResourceModel {
 
     constructor(
         public id?: string,
@@ -11,8 +10,8 @@ export class Categoria extends BaseResourceModel {
         super()
     }
 
-    static fromJson(jsonData: any): Categoria {
-        return Object.assign(new Categoria(), jsonData);
+    static fromJson(jsonData: any): Category {
+        return Object.assign(new Category(), jsonData);
     }
 
     public getId() {

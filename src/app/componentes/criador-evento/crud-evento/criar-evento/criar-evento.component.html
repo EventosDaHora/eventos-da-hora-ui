@@ -14,7 +14,7 @@
                      [placeholder]="'Título do Evento'"
                      [tipo]="'text'"
                      required="true"
-                     [(ngModel)]="evento.nome" name="tituloEvento">
+                     [(ngModel)]="evento.name" name="tituloEvento">
     </app-input-texto>
   </div>
 
@@ -24,7 +24,7 @@
                      [placeholder]="'Nome do organizador'"
                      [tipo]="'text'"
                      required="true"
-                     [(ngModel)]="evento.organizador" name="oraganizador">
+                     name="oraganizador">
     </app-input-texto>
   </div>
 
@@ -32,7 +32,7 @@
     <app-input-texto id="qtdMinima"
                      label="Quantidade mínima"
                      tipo="number"
-                     [(ngModel)]="evento.qtdMinima" name="qtdMinima"
+                     name="qtdMinima"
                      required="true">
     </app-input-texto>
   </div>
@@ -42,7 +42,7 @@
                      label="Quantidade máxima"
                      tipo="number"
                      required="true"
-                     [(ngModel)]="evento.qtdMaxima" name="qtdMaxima">
+                     name="qtdMaxima">
     </app-input-texto>
   </div>
 
@@ -52,13 +52,13 @@
         <app-select [label]="'Tipo'"
                     [placeholder]="'Tipo do evento'"
                     [itens]="categorias"
-                    [(ngModel)]="evento.categoria">
+                    [(ngModel)]="evento.category.description">
         </app-select>
       </div>
 
       <div class="p-col-12 p-md-6 p-lg-6">
         <div class="menor">
-          <p-toggleButton [(ngModel)]="evento.menorDesacompanhado"
+          <p-toggleButton
                          name="menor"
                          onLabel="Sim"
                          offLabel="Não"

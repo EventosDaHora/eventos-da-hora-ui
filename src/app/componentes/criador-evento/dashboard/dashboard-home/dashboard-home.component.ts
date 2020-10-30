@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventoService} from '../../../../services/evento/evento.service';
-import {Evento} from '../../../../dominio/Evento';
+import {Event} from '../../../../dominio/Event';
 import {TipoGrafico} from '../../util/dominio/enums/TipoGrafico';
 
 @Component({
@@ -10,7 +10,7 @@ import {TipoGrafico} from '../../util/dominio/enums/TipoGrafico';
 })
 export class DashboardHomeComponent implements OnInit {
 
-  eventos: Evento[];
+  eventos: Event[];
 
   graficoLinha = TipoGrafico.LINHA;
   graficoProgresso = TipoGrafico.PROGRESSO;
@@ -19,7 +19,7 @@ export class DashboardHomeComponent implements OnInit {
   constructor(private eventoService: EventoService) { }
 
   ngOnInit(): void {
-    this.eventos = this.eventoService.criaEventos();
+    // this.eventos = this.eventoService.criaEventos();
   }
 
 }

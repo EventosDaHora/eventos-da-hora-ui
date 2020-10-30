@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Cliente} from '../../../../../dominio/Cliente';
 import {CategoriaEvento} from '../../../../../dominio/enums/CategoriaEvento';
-import {Evento} from '../../../../../dominio/Evento';
+import {Event} from '../../../../../dominio/Event';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {EventoService} from '../../../../../services/evento/evento.service';
@@ -15,7 +15,7 @@ export class FinalizarPedidoComponent implements OnInit {
 
   pais: string;
   paises: any[];
-  eventosInseridos: Evento[] = [];
+  eventosInseridos: Event[] = [];
   quantidade = 1;
   cliente: Cliente;
   quantidades: number[];
@@ -47,7 +47,7 @@ export class FinalizarPedidoComponent implements OnInit {
       this.quantidades[i] = i;
     }
 
-    this.eventosInseridos = this.eventoService.criaEventos();
+    // this.eventosInseridos = this.eventoService.criaEventos();
 
 
 

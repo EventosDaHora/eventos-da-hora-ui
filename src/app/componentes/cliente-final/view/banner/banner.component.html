@@ -6,23 +6,22 @@
     <img src="/assets/guns-mobile.jpg" alt="IfItDoesntMatchAnyMedia">
   </picture>
 
-  <ng-template [ngIf]="evento">
+  <ng-template [ngIf]="event">
     <div class="infos-evento">
 
-      <a routerLink="/checkout/evento"><h1>{{ evento.nome }}</h1></a>
-      <p>{{ evento.data }}</p>
-      <p>{{ evento.hora }}</p>
-      <a (click)="navigateToCategoria(local, evento)">
-        {{ evento.localizacao.local }},</a>&nbsp;&nbsp;
+      <a routerLink="/checkout/evento"><h1>{{ event.name }}</h1></a>
+      <p>{{ event.date }}</p>
+      <a (click)="navigateToCategoria(local, event)">
+        {{ event.localization.localization }},</a>&nbsp;&nbsp;
 
-      <a (click)="navigateToCategoria(pais, evento)">
-        {{ evento.localizacao.pais }},</a>&nbsp;&nbsp;
+      <a (click)="navigateToCategoria(pais, event)">
+        {{ event.localization.country.description }},</a>&nbsp;&nbsp;
 
-      <a (click)="navigateToCategoria(cidade, evento)">
-        {{ evento.localizacao.cidade }}</a>
+      <a (click)="navigateToCategoria(cidade, event)">
+        {{ event.localization.city.description }}</a>
       <br>
-      <a (click)="navigateToCategoria(nome, evento)">{{ evento.nome }}</a>
-      <p style="margin-bottom: 1em">Ingressos a partir de {{ evento.ingressos[0].tipos[0].preco}}</p>
+      <a (click)="navigateToCategoria(nome, event)">{{ event.name }}</a>
+      <p style="margin-bottom: 1em">Ingressos a partir de {{ event.sections[0].ammount}} R$</p>
 
       <div [ngStyle]="{'display': mostrarBusca && !isMobile ? 'block' : 'none' }">
         <app-input-busca></app-input-busca>

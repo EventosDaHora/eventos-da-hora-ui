@@ -1,7 +1,7 @@
-import {Evento} from './Evento';
+import {Event} from './Event';
 import {Cliente} from './Cliente';
 
 export interface Carrinho {
-  eventos: Evento[];
+  eventos: Event[];
   cliente: Cliente;
 }

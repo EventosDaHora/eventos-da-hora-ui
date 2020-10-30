@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Evento} from '../../../../../dominio/Evento';
+import {Event} from '../../../../../dominio/Event';
 import {Router} from '@angular/router';
 import {EventoService} from '../../../../../services/evento/evento.service';
 
@@ -14,12 +14,12 @@ export class CarrinhoComponent implements OnInit {
               private eventoService: EventoService) {
   }
 
-  eventosInseridos: Evento[] = [];
+  eventosInseridos: Event[] = [];
   quantidade = 1;
 
   ngOnInit(): void {
 
-    this.eventosInseridos = this.eventoService.criaEventos();
+    // this.eventosInseridos = this.eventoService.criaEventos();
   }
 
   finalizarPedido() {

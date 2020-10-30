@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Evento, Ingresso, TipoIngresso} from '../../../../../dominio/Evento';
+import {Event} from '../../../../../dominio/Event';
 import {Subject} from 'rxjs';
 import {EventoService} from '../../../../../services/evento/evento.service';
 
@@ -14,34 +14,34 @@ export class TipoPrecoComponent implements OnInit, OnDestroy {
   tipoIngressoSubject: Subject<string>;
 
   @Input()
-  evento: Evento;
+  evento: Event;
 
-  ingresso: Ingresso;
-
-  tipoIngresso: TipoIngresso;
-
-  tiposIngresso: TipoIngresso[] = [];
+  // ingresso: Ingresso;
+  //
+  // tipoIngresso: TipoIngresso;
+  //
+  // tiposIngresso: TipoIngresso[] = [];
 
   constructor(private eventoService: EventoService) {
-    this.ingresso = this.eventoService.criarIngressoVazio();
+    // this.ingresso = this.eventoService.criarIngressoVazio();
   }
 
   ngOnInit(): void {
-    this.tipoIngressoSubject.subscribe(novoTipo => {
-      this.tipoIngresso = {preco: 0, quantidade: 0, descricao: novoTipo};
-      if (!this.ingresso.tipos.includes(this.tipoIngresso)) {
-        this.ingresso.tipos.push(this.tipoIngresso);
-        console.table(this.tipoIngresso);
-      }
+    // this.tipoIngressoSubject.subscribe(novoTipo => {
+    //   this.tipoIngresso = {preco: 0, quantidade: 0, descricao: novoTipo};
+    //   if (!this.ingresso.tipos.includes(this.tipoIngresso)) {
+    //     this.ingresso.tipos.push(this.tipoIngresso);
+    //     console.table(this.tipoIngresso);
+    //   }
 
-      if (!this.evento.ingressos.includes(this.ingresso)) {
-        this.evento.ingressos.push(this.ingresso);
-      }
-    });
+      // if (!this.evento.ingressos.includes(this.ingresso)) {
+      //   this.evento.ingressos.push(this.ingresso);
+      // }
+    // });
 
   }
 
   ngOnDestroy() {
-    this.tipoIngressoSubject.unsubscribe();
+    // this.tipoIngressoSubject.unsubscribe();
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Evento} from '../../../../dominio/Evento';
+import {Event} from '../../../../dominio/Event';
 import {EventoService} from '../../../../services/evento/evento.service';
 import {Subject} from 'rxjs';
 
@@ -10,9 +10,9 @@ import {Subject} from 'rxjs';
 })
 export class CriarIngressoComponent implements OnInit {
 
-  evento: Evento;
+  evento: Event;
 
-  eventos: Evento[];
+  eventos: Event[];
 
   nomesEvento: string[];
 
@@ -23,9 +23,9 @@ export class CriarIngressoComponent implements OnInit {
   constructor(private eventoService: EventoService) { }
 
   ngOnInit(): void {
-    this.evento = this.eventoService.criaEventoVazio();
-    this.eventos = this.eventoService.criaEventos();
-    this.nomesEvento = this.eventos.map(evento => evento.nome);
+    // this.evento = this.eventoService.criaEventoVazio();
+    // this.eventos = this.eventoService.criaEventos();
+    // this.nomesEvento = this.eventos.map(evento => evento.name);
   }
 
   notificarFilho() {

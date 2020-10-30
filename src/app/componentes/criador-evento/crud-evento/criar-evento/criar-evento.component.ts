@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Evento} from '../../../../dominio/Evento';
+import {Event} from '../../../../dominio/Event';
 import {EventoService} from '../../../../services/evento/evento.service';
 import {DialogService, DynamicDialogRef} from 'primeng';
 import {EventoComponent} from '../../../cliente-final/negocio/checkout/evento/main/evento.component';
@@ -14,7 +14,7 @@ import {ImagemEventoComponent} from './imagem-evento/imagem-evento.component';
 })
 export class CriarEventoComponent implements OnInit, OnDestroy {
 
-  evento: Evento;
+  evento: Event;
 
   categorias: string[];
 
@@ -24,8 +24,8 @@ export class CriarEventoComponent implements OnInit, OnDestroy {
               public dialogService: DialogService) { }
 
   ngOnInit(): void {
-    this.evento = this.eventoService.criaEventoVazio();
-    this.categorias = this.eventoService.getCategorias();
+    // this.evento = this.eventoService.criaEventoVazio();
+    // this.categorias = this.eventoService.getCategorias();
   }
 
   ngOnDestroy() {

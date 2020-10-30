@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventoService} from '../../../services/evento/evento.service';
-import {Evento} from '../../../dominio/Evento';
+import {Event} from '../../../dominio/Event';
 import {MenuItem} from 'primeng';
 
 @Component({
@@ -10,7 +10,7 @@ import {MenuItem} from 'primeng';
 })
 export class CrudEventoComponent implements OnInit {
 
-  eventos: Evento[];
+  eventos: Event[];
 
   cadastrando = false;
 
@@ -20,7 +20,7 @@ export class CrudEventoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventos = this.eventoService.criaEventos();
+    // this.eventos = this.eventoService.criaEventos();
     this.items = [{
       label: 'Eventos',
       items: [

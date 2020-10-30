@@ -13,13 +13,13 @@ import {FormsModule} from '@angular/forms';
 import {CheckboxModule} from 'primeng/checkbox';
 import { IndicadorFiltroComponent } from './filtro-evento/indicador-filtro/indicador-filtro.component';
 
-
 const rotas: Routes = [
   {path: '', component: IndexComponent},
   {path: 'eventos-categoria', component: EventosCategoriaComponent}
 
 ];
 
+// @ts-ignore
 @NgModule({
   declarations: [
     BannerComponent,
@@ -46,6 +46,7 @@ const rotas: Routes = [
   ],
   exports: [IndexComponent, BannerComponent]
 })
+// @ts-ignore
 export class ViewModule {
 
 }

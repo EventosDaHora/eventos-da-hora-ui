@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Evento} from './dominio/Evento';
+import {Event} from './dominio/Event';
 import {Router} from '@angular/router';
 import {AuthService} from "./infra/security/auth.service";
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
               public authService: AuthService) {
   }
 
-  evento: Evento;
+  evento: Event;
   colorido = false;
 
   @HostListener('window:scroll', ['$event'])

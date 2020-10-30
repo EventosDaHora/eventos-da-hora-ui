@@ -7,7 +7,7 @@ import {environment} from "../../../environments/environment";
 export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
   resources: T[] = [];
-  apiFileUrl= `${environment.apiUrl}/eventos-da-hora-image-api`;
+  apiImageURL= `${environment.apiUrl}/eventos-da-hora-image-api`;
 
   constructor(private baseResourceService: BaseResourceService<T>) {
   }
@@ -35,7 +35,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
 
   loadImage(idImage: string): string {
     if (idImage != null) {
-      return `${this.apiFileUrl}/${idImage}`;
+      return `${this.apiImageURL}/${idImage}`;
     } else {
       return 'assets/img/default.png';
     }

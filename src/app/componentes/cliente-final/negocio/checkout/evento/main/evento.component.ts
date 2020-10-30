@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Evento} from '../../../../../../dominio/Evento';
+import {Event} from '../../../../../../dominio/Event';
 import {EventoService} from '../../../../../../services/evento/evento.service';
 import {ResolucaoDispositivoService} from '../../../../../../services/resolucao-dispositivo.service';
 
@@ -10,7 +10,7 @@ import {ResolucaoDispositivoService} from '../../../../../../services/resolucao-
 })
 export class EventoComponent implements OnInit {
 
-  evento: Evento;
+  evento: Event;
 
   isMobile = true;
 
@@ -21,7 +21,7 @@ export class EventoComponent implements OnInit {
 
   ngOnInit(): void {
     this.tamanhoDaTela();
-    this.evento = this.eventoService.criaEvento();
+    // this.evento = this.eventoService.criaEvento();
   }
 
   @HostListener('window:resize', ['$event'])

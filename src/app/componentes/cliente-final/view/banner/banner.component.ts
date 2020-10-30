@@ -1,8 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {Evento} from 'src/app/dominio/Evento';
+import {Event} from 'src/app/dominio/Event';
 import {FiltroEvento} from '../../../../dominio/enums/FiltroEvento';
 import {Router} from '@angular/router';
 import {ResolucaoDispositivoService} from '../../../../services/resolucao-dispositivo.service';
+import {EventoService} from "../../../../services/evento/evento.service";
 
 @Component({
   selector: 'app-banner',
@@ -12,7 +13,7 @@ import {ResolucaoDispositivoService} from '../../../../services/resolucao-dispos
 export class BannerComponent implements OnInit {
 
   @Input()
-  evento: Evento;
+  event: Event;
 
   @Input()
   mostrarBusca ? = false;
@@ -25,11 +26,14 @@ export class BannerComponent implements OnInit {
   nome = FiltroEvento.nome;
 
   constructor(private router: Router,
-              private resolucao: ResolucaoDispositivoService) {
+              private resolucao: ResolucaoDispositivoService,
+              private eventService: EventoService) {
   }
 
   ngOnInit(): void {
-    this.evento.nome = 'Guns and Roses';
+    this.eventService.getById(1).subscribe(response => {
+      this.event = response as Event;
+    })
     this.tamanhoDaTela();
   }
 
@@ -39,7 +43,7 @@ export class BannerComponent implements OnInit {
     this.isMobile = this.resolucao.tamanhoDaTela();
   }
 
-  navigateToCategoria(filtroEvento: FiltroEvento, evento: Evento) {
+  navigateToCategoria(filtroEvento: FiltroEvento, evento: Event) {
     this.router.navigate(['eventos-categoria'],
       {
         state: {

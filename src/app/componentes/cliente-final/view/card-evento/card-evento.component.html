@@ -1,6 +1,7 @@
   <section class="card-container">
+
     <div>
-      <p-carousel [value]="eventos"
+      <p-carousel [value]="resources"
                   [numVisible]="4"
                   [numScroll]="3"
                   [circular]="false"
@@ -19,19 +20,19 @@
 
               <div class="p-nogutter">
                 <div class="container-img">
-                  <img src="/assets/show-live.jpg" alt="imagem"/>
+                  <img [src]="loadThumbImage(evento)"  alt="imagem"/>
                 </div>
-                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.nome}}</div>
-                <div class="evento-nome" *ngIf="!mostrarInfosEvento">{{evento.localizacao.pais}}</div>
+                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.name}}</div>
+                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.localization.country.description}}</div>
 
                 <ng-template [ngIf]="mostrarInfosEvento">
                   <div class="info-evento">
-                    <span class="local">{{evento.localizacao.local}}</span>
-                    <span class="cidade">{{evento.localizacao.pais}}, {{evento.localizacao.cidade}}</span>
+                    <span class="local">{{evento.localization.localization}}</span>
+                    <span class="cidade">{{evento.localization.country.description}}, {{evento.localization.city.description}}</span>
                   </div>
 
                   <div class="data-valor">
-                    <span class="data">{{evento.data}}</span>
+                    <span class="data">{{evento.date}}</span>
                     <span class="valor">R$ {{120}},00</span>
                   </div>
                 </ng-template>

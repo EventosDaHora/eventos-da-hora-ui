@@ -34,9 +34,13 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.getRandomEvent().subscribe(response => {
-      this.event = response as Event;
-    })
+    this.event = this.eventService.eventSelected;
+
+    if(!this.event){
+      this.eventService.getRandomEvent().subscribe(response => {
+        this.event = response as Event;
+      })
+    }
     this.tamanhoDaTela();
   }
 

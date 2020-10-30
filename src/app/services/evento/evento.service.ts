@@ -10,6 +10,8 @@ import {catchError, map} from "rxjs/operators";
 })
 export class EventoService extends BaseResourceService<Event> {
 
+    public eventSelected: Event;
+
     constructor(protected injector: Injector) {
         super(`${environment.apiUrl}/eventos-da-hora-event-api/events`, injector, Event.fromJson);
     }

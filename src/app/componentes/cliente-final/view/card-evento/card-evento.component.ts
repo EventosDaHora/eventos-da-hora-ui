@@ -77,4 +77,7 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
         }
     }
 
+    public selectEvent(event: Event) {
+        this.eventoService.eventSelected = event;
+    }
 }

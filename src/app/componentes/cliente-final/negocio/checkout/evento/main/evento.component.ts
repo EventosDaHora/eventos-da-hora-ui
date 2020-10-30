@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Event} from '../../../../../../dominio/Event';
 import {EventoService} from '../../../../../../services/evento/evento.service';
 import {ResolucaoDispositivoService} from '../../../../../../services/resolucao-dispositivo.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-evento',
@@ -11,13 +12,17 @@ import {ResolucaoDispositivoService} from '../../../../../../services/resolucao-
 export class EventoComponent implements OnInit {
 
   evento: Event;
-
+  eventId: string;
   isMobile = true;
 
   ordemPrecoSelecionada: string;
 
   constructor(private eventoService: EventoService,
-              private resolucao: ResolucaoDispositivoService) { }
+              private resolucao: ResolucaoDispositivoService,
+              protected route: ActivatedRoute,) {
+    this.eventId = this.route.snapshot.params.eventId;
+
+  }
 
   ngOnInit(): void {
     this.tamanhoDaTela();

@@ -3,7 +3,7 @@
     <div>
       <p-carousel [value]="resources"
                   [numVisible]="4"
-                  [numScroll]="3"
+                  [numScroll]="1"
                   [circular]="false"
                   [responsiveOptions]="responsiveOptions"
                   class="carrossel">
@@ -11,7 +11,7 @@
           <h1>Eventos Populares</h1>
         </p-header>
         <ng-template let-evento pTemplate="item">
-          <a routerLink="/checkout/evento">
+          <a routerLink="/checkout/evento" (click)="selectEvent(evento)">
             <div class="car-details"
                  fxLayoutAlign="center"
                  fxLayout="row"

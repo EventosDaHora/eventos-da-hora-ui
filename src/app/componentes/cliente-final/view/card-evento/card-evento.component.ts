@@ -54,7 +54,6 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
     }
 
     public loadThumbImage(event: Event) {
-        console.log(event);
         return this.loadImageEvent(event, 'THUMBNAIL');
     }
 
@@ -66,7 +65,6 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
         let imageThumb: ImageEvent = null;
 
         event.images.forEach(image =>{
-            console.log(image.imageType);
             if(image.imageType === typeImage){
                 imageThumb = image;
             }

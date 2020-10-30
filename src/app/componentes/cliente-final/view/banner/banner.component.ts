@@ -4,6 +4,8 @@ import {FiltroEvento} from '../../../../dominio/enums/FiltroEvento';
 import {Router} from '@angular/router';
 import {ResolucaoDispositivoService} from '../../../../services/resolucao-dispositivo.service';
 import {EventoService} from "../../../../services/evento/evento.service";
+import {ImageEvent} from "../../../../dominio/ImageEvent";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-banner',
@@ -24,6 +26,7 @@ export class BannerComponent implements OnInit {
   pais = FiltroEvento.pais;
   cidade = FiltroEvento.cidade;
   nome = FiltroEvento.nome;
+  apiImageURL= `${environment.apiUrl}/eventos-da-hora-image-api`;
 
   constructor(private router: Router,
               private resolucao: ResolucaoDispositivoService,
@@ -31,7 +34,7 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.getById(1).subscribe(response => {
+    this.eventService.getRandomEvent().subscribe(response => {
       this.event = response as Event;
     })
     this.tamanhoDaTela();
@@ -50,5 +53,29 @@ export class BannerComponent implements OnInit {
           filtro: {filtroEvento, evento}
         }
       });
+  }
+
+  public loadThumbImage(event: Event) {
+    return this.loadImageEvent(event, 'THUMBNAIL');
+  }
+
+  public loadBannerImage(event: Event) {
+    return this.loadImageEvent(event, 'BANNER');
+  }
+
+  private loadImageEvent(event: Event, typeImage: string) {
+    let imageThumb: ImageEvent = null;
+
+    event.images.forEach(image =>{
+      if(image.imageType === typeImage){
+        imageThumb = image;
+      }
+    })
+
+    if(imageThumb == null){
+      return 'assets/show-live.jpg';
+    }else{
+      return `${this.apiImageURL}/images/${imageThumb.imageId}`;
+    }
   }
 }

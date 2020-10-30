@@ -38,7 +38,7 @@ import {ToastrModule} from "ngx-toastr";
     ],
     providers: [
         AuthService,
-        AuthGuard
+        AuthGuard,
     ],
     bootstrap: [AppComponent]
 })

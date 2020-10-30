@@ -32,8 +32,8 @@
                   </div>
 
                   <div class="data-valor">
-                    <span class="data">{{evento.date}}</span>
-                    <span class="valor">R$ {{120}},00</span>
+                    <span class="data">{{evento.date | date: 'dd/MM/yyyy' }}</span>
+                    <span class="valor">R{{evento.sections[0].ammount | currency}}</span>
                   </div>
                 </ng-template>
 

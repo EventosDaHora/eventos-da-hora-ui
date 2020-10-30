@@ -1,9 +1,9 @@
 <div class="banner">
 
   <picture class="imagem-evento">
-    <source media="(min-width: 900px)" srcset="/assets/guns.jpg">
-    <source media="(min-width: 600px)" srcset="/assets/guns-tablet.jpg">
-    <img src="/assets/guns-mobile.jpg" alt="IfItDoesntMatchAnyMedia">
+    <source media="(min-width: 900px)" [srcset]="loadBannerImage(event)">
+    <source media="(min-width: 600px)"  [srcset]="loadBannerImage(event)">
+    <img [src]="loadBannerImage(event)" alt="IfItDoesntMatchAnyMedia">
   </picture>
 
   <ng-template [ngIf]="event">
@@ -21,7 +21,7 @@
         {{ event.localization.city.description }}</a>
       <br>
       <a (click)="navigateToCategoria(nome, event)">{{ event.name }}</a>
-      <p style="margin-bottom: 1em">Ingressos a partir de {{ event.sections[0].ammount}} R$</p>
+      <p style="margin-bottom: 1em">Ingressos a partir de R{{ event.sections[0].ammount | currency}}</p>
 
       <div [ngStyle]="{'display': mostrarBusca && !isMobile ? 'block' : 'none' }">
         <app-input-busca></app-input-busca>

@@ -24,10 +24,11 @@
 
     <div class="ingresso" >
       <h1>Escolha seu ingresso</h1>
-      <div *ngFor="let i of [1, 2, 3, 4, 5]" style="margin-bottom: 1em">
-       <p-card>
-         <app-escolha-ingresso></app-escolha-ingresso>
-       </p-card>
+
+      <div *ngFor="let section of evento.sections" style="margin-bottom: 1em">
+        <p-card>
+          <app-escolha-ingresso [section]="section" (change)="addCart($event)"></app-escolha-ingresso>
+        </p-card>
       </div>
     </div>
 

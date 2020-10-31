@@ -3,10 +3,10 @@
     <p-header>
       <div class="preco">
         <div class="up">
-          <h1>Local do Assento</h1>
+          <h1>{{section.name}}</h1>
         </div>
         <div class="down">
-          <h1>R$ 150,00</h1>
+          <h1>R{{section.ammount | currency}}</h1>
         </div>
       </div>
     </p-header>
@@ -19,7 +19,7 @@
                  name="qtd"
                  class="select">
       </ng-select>
-      <button pButton label="Comprar" routerLink="/checkout/carrinho"></button>
+      <button pButton label="Adicionar" (click)="addTicket(section)"></button>
     </div>
   </section>
 

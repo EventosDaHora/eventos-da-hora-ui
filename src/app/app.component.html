@@ -34,6 +34,9 @@
 
       <li class="carrinho" routerLink="/checkout/carrinho">
         <i class="pi pi-shopping-cart" style="font-size: 1.5em;"></i>
+        <span class='badge badge-warning' id='lblCartCount'>
+            {{cartService.getQuantityItemCart()}}
+          </span>
       </li>
 
     </ul>

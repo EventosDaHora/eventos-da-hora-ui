@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Event} from './dominio/Event';
 import {Router} from '@angular/router';
 import {AuthService} from "./infra/security/auth.service";
+import {CartService} from "./services/cart.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   display = false;
 
   constructor(private router: Router,
-              public authService: AuthService) {
+              public authService: AuthService,
+              public cartService: CartService) {
   }
 
   evento: Event;

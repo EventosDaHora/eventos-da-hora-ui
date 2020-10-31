@@ -10,7 +10,7 @@
     <div class="infos-evento">
 
       <a routerLink="/checkout/evento"><h1>{{ event.name }}</h1></a>
-      <p>{{ event.date }}</p>
+      <p>{{ event.date | date: 'dd/MM/yyyy'}}</p>
       <a (click)="navigateToCategoria(local, event)">
         {{ event.localization.localization }},</a>&nbsp;&nbsp;
 

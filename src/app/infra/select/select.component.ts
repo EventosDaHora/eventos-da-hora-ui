@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {AbstractControleValueAccessor} from '../AbstractControleValueAccessor';
+import {EventEmitter} from "events";
 
 @Component({
   selector: 'app-select',
@@ -23,6 +24,5 @@ export class SelectComponent extends AbstractControleValueAccessor{
   constructor() {
     super();
   }
-
 
 }

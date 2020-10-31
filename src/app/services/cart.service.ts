@@ -4,6 +4,7 @@ import {TicketOrder} from "../dominio/order/TicketOrder";
 import {UserService} from "./user/user.service";
 import {AuthService} from "../infra/security/auth.service";
 import {Payment} from "../dominio/order/Payment";
+import {Event} from "../dominio/Event";
 
 @Injectable({
     providedIn: 'root'

@@ -45,14 +45,58 @@
       </div>
     </ng-template>
 
-    <ng-template #desktop>
-      <div class="assento">
-        <h1>Escolha onde vai sentar</h1>
+      <div class="assento" *ngIf="cartService.getQuantityItemCart() > 0">
+        <h1>Seus ingressos</h1>
         <p-card>
-          <img src="/assets/mapa-ambiente.png" style="width: 100%; height: 360px">
+<!--          <img src="/assets/mapa-ambiente.png" style="width: 100%; height: 360px">-->
+
+            <div *ngFor="let ticket of cartService.order.tickets; let indexId = index;">
+              <div class="row">
+
+                <div class="p-col-12 p-md-12 p-lg-12">
+                  <h1>{{ticket.event.name}}</h1>
+                  <p>Quantidade: {{ticket.quantity}} - {{ticket.section.name}}</p>
+                  <h1 class="subtotal">R{{(ticket.section.ammount * ticket.quantity) | currency}}</h1>
+                  <div class="ui-button-primary" (click)="cartService.removeTicketCart(indexId)">
+                    <a>Excluir</a>
+                  </div>
+                </div>
+
+                <hr>
+              </div>
+
+            </div>
+
+            <div class="p-grid totalizacao">
+              <div class="p-col-12 p-md-12 p-lg-12">
+                <div class="p-grid">
+
+                  <div class="p-col-12 p-md-6 p-lg-6" >
+                    <div style="width: 100%">
+                      <h3>Total a pagar</h3>
+                      <h2>R{{cartService.getTotalValue() | currency}}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-col-12 p-md-12 p-lg-12">
+                <div class="p-grid">
+                  <div class="p-col-12 p-md-12 p-lg-12">
+                    <button label="Finalizar Pedido"
+                            pButton class="ui-button-primary"
+                            style="display: block; margin: 0 auto"
+                            routerLink="/checkout/carrinho">
+
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
         </p-card>
       </div>
-    </ng-template>
 
     <div class="local-evento">
      <p-card>

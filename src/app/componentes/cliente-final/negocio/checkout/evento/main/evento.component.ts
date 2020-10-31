@@ -22,7 +22,7 @@ export class EventoComponent implements OnInit {
     constructor(private eventoService: EventoService,
                 private resolucao: ResolucaoDispositivoService,
                 private router: Router,
-                private cartService: CartService) {
+                public cartService: CartService) {
     }
 
     ngOnInit(): void {
@@ -42,7 +42,8 @@ export class EventoComponent implements OnInit {
         return ['maior-menor', 'menor-maior'];
     }
 
-    public addCart(event: TicketOrder) {
-        this.cartService.addTicketCart(event);
+    public addCart(ticketOrder: TicketOrder) {
+        ticketOrder.event = this.evento;
+        this.cartService.addTicketCart(ticketOrder);
     }
 }

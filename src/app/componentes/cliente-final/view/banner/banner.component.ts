@@ -12,12 +12,15 @@ import {environment} from "../../../../../environments/environment";
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss']
 })
+// @ts-ignore
 export class BannerComponent implements OnInit {
 
     @Input()
+        // @ts-ignore
     event: Event;
 
     @Input()
+        // @ts-ignore
     mostrarBusca ? = false;
 
     isMobile = true;
@@ -70,7 +73,7 @@ export class BannerComponent implements OnInit {
     private loadImageEvent(event: Event, typeImage: string) {
         let imageThumb: ImageEvent = null;
 
-        if (event.images) {
+        if (event) {
             event.images.forEach(image => {
                 if (image.imageType === typeImage) {
                     imageThumb = image;

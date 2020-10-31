@@ -3,6 +3,7 @@ import {Event} from "../../../../../../dominio/Event";
 import {Section} from "../../../../../../dominio/Section";
 import {Ticket} from "../../../../../../dominio/Ticket";
 import {TicketOrder} from "../../../../../../dominio/order/TicketOrder";
+import {NotificationService} from "../../../../../../services/notification.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class EscolhaIngressoComponent implements OnInit {
     @Output()
     change: EventEmitter<TicketOrder> = new EventEmitter<TicketOrder>();
 
-    constructor() {
+    constructor(public notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
@@ -29,5 +30,6 @@ export class EscolhaIngressoComponent implements OnInit {
     public addTicket(section: Section) {
         console.log(section);
         this.change.emit(new TicketOrder(this.qtd, this.section));
+        this.notificationService.success("Adicionado com sucesso", "Ingresso")
     }
 }

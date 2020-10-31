@@ -1,5 +1,5 @@
 <section class="container">
-  <ng-template [ngIf]="eventosInseridos.length === 0">
+  <ng-template [ngIf]="cartService.getQuantityItemCart() <= 0">
     <div class="carrinho-vazio">
       <h1>Parece que seu carrinho está vazio...</h1>
 
@@ -9,33 +9,42 @@
     </div>
   </ng-template>
 
-  <ng-template [ngIf]="eventosInseridos.length > 0">
+  <ng-template [ngIf]="cartService.getQuantityItemCart() > 0">
     <div class="carrinho">
       <div class="titulo-carrinho">
         <h1>Carrinho de compra</h1>
         <p>Uma visão geral do seu pedido</p>
       </div>
 
-      <div class="p-grid eventos" *ngFor="let evento of eventosInseridos">
+      <div class="p-grid eventos" *ngFor="let ticket of cartService.order.tickets; let indexId = index;">
         <div class="p-col-12 p-md-6 p-lg-6 infos-evento">
           <i class="pi pi-times fechar"></i>
-          <h1>asdfasdfa dfasdfasdfasfas dfasdfasdfasf</h1>
-          <p>Local do assento</p>
-          <p><strong>Data: </strong>{{evento.data}}</p>
-          <p><strong>País: </strong>{{evento.localizacao.pais}}</p>
-          <p><strong>Cidade: </strong>{{evento.localizacao.cidade}}</p>
-          <p><strong>Local: </strong>{{evento.localizacao.local}}</p>
+          <h1>{{ticket.event.name}}</h1>
+          <p>{{ticket.section.name}}</p>
+          <p><strong>Data: </strong>{{ticket.event.date | date: 'dd/MM/yyyy'}}</p>
+          <p><strong>País: </strong>{{ticket.event.localization.country.description}}</p>
+          <p><strong>Cidade: </strong>{{ticket.event.localization.city.description}}</p>
+          <p><strong>Local: </strong>{{ticket.event.localization.localization}}</p>
           <hr>
         </div>
 
         <div class="p-col-12 p-md-6 p-lg-6 checkout">
           <div class="quantidade">
-            <app-select [itens]="[1,2,3,4,5]" [id]="'quantidade'"></app-select>
+            <ng-select [items]="[1,2,3,4,5]"
+                       [clearable]="false"
+                       [searchable]="false"
+                       [(ngModel)]="ticket.quantity"
+                       name="{{ticket.quantity}}"
+                       id="{{quantidade+indexId}}"
+                       class="custom">
+            </ng-select>
+
+
           </div>
-          <div class="excluir">
+          <div class="excluir" (click)="cartService.removeTicketCart(indexId)">
             <a>Excluir</a>
           </div>
-          <h1 class="subtotal">R$ {{150 * quantidade }}</h1>
+          <h1 class="subtotal">R{{(ticket.section.ammount * ticket.quantity) | currency}}</h1>
         </div>
       </div>
 
@@ -45,14 +54,14 @@
             <div class="p-col-12 p-md-6 p-lg-6">
               <div>
                 <h5>Custo do serviço</h5>
-                <h5>R$ 5,00</h5>
+                <h5>R{{fees | currency}}</h5>
               </div>
             </div>
 
             <div class="p-col-12 p-md-6 p-lg-6" >
               <div style="width: 100%">
                 <h3>Total a pagar</h3>
-                <h2>R$ 1505,00</h2>
+                <h2>R{{getTotalValueForPayment() | currency}}</h2>
               </div>
             </div>
           </div>
@@ -64,7 +73,8 @@
               <button label="Finalizar Pedido"
                       pButton class="ui-button-primary"
                       style="display: block; margin: 0 auto"
-                      (click)="finalizarPedido()">
+                          (click)="teste()">
+
               </button>
             </div>
             <div class="p-col-12 p-md-12 p-lg-12">

@@ -1,4 +1,3 @@
-import { CategoriaEvento } from './enums/CategoriaEvento';
 import {BaseResourceModel} from "./base-resource.model";
 import {Category} from "./Category";
 import {StatusEvent} from "./StatusEvent";
@@ -6,7 +5,7 @@ import {Localization} from "./Localization";
 import {Section} from "./Section";
 import {ImageEvent} from "./ImageEvent";
 
-export class Event extends BaseResourceModel{
+export class Event extends BaseResourceModel {
 
     constructor(
         public id?: string,

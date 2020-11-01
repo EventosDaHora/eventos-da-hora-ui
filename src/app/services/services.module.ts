@@ -8,4 +8,5 @@ import { CommonModule } from '@angular/common';
   ],
   providers: []
 })
+// @ts-ignore
 export class ServicesModule { }

@@ -64,7 +64,7 @@ export class FinalizarPedidoComponent implements OnInit {
   }
 
   protected actionsForSuccess(): void {
-    this.notificationService.success('Sucesso ao cadastrar! Em instantes você receberá um email com as instruções de acesso.', 'Nova Conta');
+    this.notificationService.success('Sucesso ao realizar compra!', 'Ingresso');
     this.cartService.clearCart();
     this.router.navigate(['conta/dashboard-usuario']);
   }

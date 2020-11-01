@@ -20,7 +20,6 @@ export class EventosCategoriaComponent implements OnInit {
     this.evento = history.state.filtro.evento;
     this.chaveDeBusca = history.state.filtro.filtroEvento;
     // TODO: Buscar Eventos no backend de acordo com a chave de busca
-    console.log(history.state.filtro);
   }
 
 }

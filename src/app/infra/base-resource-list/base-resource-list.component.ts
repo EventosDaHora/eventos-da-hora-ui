@@ -15,7 +15,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
   ngOnInit(): void {
     this.baseResourceService.getAll().subscribe(
       (entries) => (this.resources = entries.sort((a, b) => b.getId() - a.getId())),
-      (error) => alert('Erro ao carregar lista')
+      (error) => console.log('Erro ao carregar lista')
     );
   }
 

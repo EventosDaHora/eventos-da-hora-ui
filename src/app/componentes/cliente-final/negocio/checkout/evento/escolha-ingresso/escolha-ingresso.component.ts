@@ -28,7 +28,6 @@ export class EscolhaIngressoComponent implements OnInit {
     }
 
     public addTicket(section: Section) {
-        console.log(section);
         this.change.emit(new TicketOrder(this.qtd, this.section));
         this.notificationService.success("Adicionado com sucesso", "Ingresso")
     }

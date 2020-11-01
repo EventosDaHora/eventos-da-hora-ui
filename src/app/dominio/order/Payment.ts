@@ -1,9 +1,10 @@
 export class Payment {
 
-    public vlAmount?: number;
+
 
     constructor(
-        public paymentType?: string
+        public paymentType?: string,
+        public vlAmount?: number
     ) {
     }
 

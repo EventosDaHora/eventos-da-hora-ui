@@ -2,25 +2,29 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {BaseFormComponent} from "../../../../../infra/base-form-component/base-form-component.component";
 import {UserAuth} from "../../../../../infra/security/user-auth";
 import {Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../../../infra/security/auth.service";
 import {NotificationService} from "../../../../../services/notification.service";
+import {CartService} from "../../../../../services/cart.service";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
+// @ts-ignore
 export class LoginComponent extends BaseFormComponent implements OnInit {
 
     userAuth: UserAuth;
+    redirectUrl: string;
 
     constructor(
+        private cartService: CartService,
+        protected activatedRoute: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
         protected injector: Injector) {
         super(injector);
-
     }
 
     ngOnInit(): void {
@@ -46,7 +50,13 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
             .subscribe(result => {
                     if (result) {
                         this.notificationService.success('Sucesso ao realizar login', 'Login');
-                        this.router.navigate(['']);
+
+                        if(!this.cartService.empty()){
+                            this.router.navigate(['/checkout/finalizar-pedido']);
+                        }else{
+                            this.router.navigate(['']);
+                        }
+
                     } else {
                         this.notificationService.error('Usuário ou senha inválidos!', 'Login');
                     }
@@ -65,5 +75,6 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
             this.notificationService.error('Erro ao processar requisição!', 'Login');
         }
     }
+
 
 }

@@ -25,7 +25,7 @@ export class IndexComponent implements OnInit {
   getAllCategories() {
     this.categoryService.getAll().subscribe(
         (entries) => (this.categorias = entries as Category[]),
-        (error) => alert('Erro ao carregar categorias')
+        (error) => console.log('Erro ao carregar categorias')
     );
   }
 

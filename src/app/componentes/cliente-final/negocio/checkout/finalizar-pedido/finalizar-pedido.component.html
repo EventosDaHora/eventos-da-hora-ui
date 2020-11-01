@@ -5,43 +5,36 @@
       <div class="passo-pedido">
         <h1>Meus detalhes</h1>
         <form>
-          <app-input-texto id="nome"
+          <app-input-texto id="nome" disabled="true"
                            [placeholder]="'Nome Completo'"
                            [label]="'Nome'"
-                           required="true"
                            [(ngModel)]="cliente.nome" name="nome">
           </app-input-texto>
-
-          <app-input-texto id="email"
+          <br>
+          <app-input-texto id="email" disabled="true"
                            [placeholder]="'E-mail'"
                            [label]="'E-mail'"
-                           required="true"
                            [(ngModel)]="cliente.email" name="email">
           </app-input-texto>
-
-          <app-input-mask [id]="'celular'"
-                          [mask]="'+99 (99)-9999-9999'"
-                          [label]="'Número celular'"
-                          [placeholder]="'(99)-9999-9999'">
-          </app-input-mask>
-
-          <app-select [itens]="paises"
-                      [placeholder]="'País'"
-                      [label]="'País'"
-                      [id]="pais">
-          </app-select>
+          <br>
+          <app-input-texto id="celular" disabled="true"
+                           [placeholder]="'Celular'"
+                           [label]="'Celular'"
+                           [(ngModel)]="cliente.celular" name="celular">
+          </app-input-texto>
         </form>
       </div>
     </div>
 
 
-    <div class="p-col-12 p-md-6 p-lg-4">
+    <div class="p-col-12 p-md-6 p-lg-4">Confirmar
+
       <div class="passo-pedido">
         <h1>Método de Pagamento</h1>
         <ul class="metodos-pag">
           <li>
             <p-radioButton name="group1"
-                           value="Boleto Bancário"
+                           value="BOLETO"
                            label="Boleto Bancário"
                            [(ngModel)]="metodoPagamento"
                            inputId="boleto">
@@ -49,34 +42,18 @@
           </li>
           <li>
             <p-radioButton name="group1"
-                           value="Visa"
-                           label="Visa"
+                           value="DEBITO"
+                           label="Débito"
                            [(ngModel)]="metodoPagamento"
-                           inputId="visa">
+                           inputId="debito">
             </p-radioButton>
           </li>
           <li>
             <p-radioButton name="group1"
-                           value="Mastercard"
-                           label="Mastercard"
+                           value="CREDITO"
+                           label="Credito"
                            [(ngModel)]="metodoPagamento"
-                           inputId="mastercard">
-            </p-radioButton>
-          </li>
-          <li>
-            <p-radioButton name="group1"
-                           value="PayPal"
-                           label="PayPal"
-                           [(ngModel)]="metodoPagamento"
-                           inputId="PayPal">
-            </p-radioButton>
-          </li>
-          <li>
-            <p-radioButton name="group1"
-                           value="Apple Pay"
-                           label="Apple Pay"
-                           [(ngModel)]="metodoPagamento"
-                           inputId="applePay">
+                           inputId="credito">
             </p-radioButton>
           </li>
         </ul>
@@ -91,17 +68,21 @@
             <div class="infos-evento">
               <div class="conteudo-horizontal">
                 <h4>Custo do serviço</h4>
-                <h4>R$ 5,00</h4>
+                <h4>R{{cartService.getTotalFees() | currency}}</h4>
+              </div>
+              <div class="conteudo-horizontal">
+                <h4>Custo dos ingressos</h4>
+                <h4>R{{cartService.getTotalValue() | currency}}</h4>
               </div>
               <hr>
 
               <div class="conteudo-horizontal">
                 <h3>Total a pagar</h3>
-                <h2>R$ 5,00</h2>
+                <h2>R{{cartService.getTotalValueAndTotalFees() | currency}}</h2>
               </div>
 
               <div class="p-field p-grid">
-                <button label="Finalizar Pedido"
+                <button label="Finalizar Pedido" (click)="finalizarPedido()"
                         pButton class="ui-button-primary largura-total"></button>
               </div>
 

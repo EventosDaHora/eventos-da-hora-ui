@@ -5,12 +5,17 @@ import {Event} from '../../../../../dominio/Event';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {EventoService} from '../../../../../services/evento/evento.service';
+import {AuthService} from "../../../../../infra/security/auth.service";
+import {CartService} from "../../../../../services/cart.service";
+import {NotificationService} from "../../../../../services/notification.service";
+import {OrderService} from "../../../../../services/order.service";
 
 @Component({
   selector: 'app-finalizar-pedido',
   templateUrl: './finalizar-pedido.component.html',
   styleUrls: ['./finalizar-pedido.component.scss']
 })
+// @ts-ignore
 export class FinalizarPedidoComponent implements OnInit {
 
   pais: string;
@@ -22,35 +27,50 @@ export class FinalizarPedidoComponent implements OnInit {
   metodoPagamento: string;
 
   constructor(private route: ActivatedRoute,
-              private eventoService: EventoService) {
+              private router: Router,
+              private authService: AuthService,
+              public cartService: CartService,
+              private eventoService: EventoService,
+              private notificationService: NotificationService) {
     this.paises = ['New York', 'Rome', 'London', 'Istanbul', 'Paris'];
     this.cliente = {
-      nome: '',
-      email: '',
-      pais: '',
-      celular: '',
-      login: {
-        usuario: '',
-        senha: ''
-      }
+      nome: this.authService.currentUser.nmUser,
+      email: this.authService.currentUser.sub,
+      celular: this.authService.currentUser.dsCellphone
     };
 
   }
 
-
-
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => console.log(params));
-
-    this.quantidades = Array(5);
-    for (let i = 0; i < this.quantidades.length; i++) {
-      this.quantidades[i] = i;
+    if(this.cartService.empty()){
+      this.router.navigate(['/']);
     }
-
-    // this.eventosInseridos = this.eventoService.criaEventos();
-
-
 
   }
 
+  public finalizarPedido() {
+    if(!this.metodoPagamento){
+      this.notificationService.warning('Método de pagamento deve ser escolhido para continuar', 'Pagamento');
+    }else {
+
+      this.cartService.addPaymentType(this.metodoPagamento);
+
+      console.log(this.cartService.order);
+      this.cartService.sendOrder().subscribe(
+          (resourceTemp) => this.actionsForSuccess(),
+          (error) => this.actionsForError(error)
+      );
+    }
+  }
+
+  protected actionsForSuccess(): void {
+    this.notificationService.success('Sucesso ao cadastrar! Em instantes você receberá um email com as instruções de acesso.', 'Nova Conta');
+    this.cartService.clearCart();
+    this.router.navigate(['conta/dashboard-usuario']);
+  }
+
+  protected actionsForError(error): void {
+    this.notificationService.error('Falha ao processar sua solicitação!', 'Erro');
+    this.router.navigate(['/']);
+  }
 }

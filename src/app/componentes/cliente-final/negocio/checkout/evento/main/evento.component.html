@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <ng-template [ngIf]="isMobile" [ngIfElse]="desktop">
+    <ng-template [ngIf]="isMobile" >
       <div class="assento">
         <p-accordion>
           <p-accordionTab header="Ver mapa do ambiente">
@@ -73,8 +73,7 @@
 
                   <div class="p-col-12 p-md-6 p-lg-6" >
                     <div style="width: 100%">
-                      <h3>Total a pagar</h3>
-                      <h2>R{{cartService.getTotalValue() | currency}}</h2>
+                      <h3>Total a pagar: R{{cartService.getTotalValue() | currency}}</h3>
                     </div>
                   </div>
                 </div>

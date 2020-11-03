@@ -1,7 +1,7 @@
-import {Section} from "../Section";
-import {Event} from "../Event";
+import {Section} from "../../Section";
+import {Event} from "../../Event";
 
-export class TicketOrder {
+export class TicketOrderRequest {
 
     public id?: string;
     public event: Event;

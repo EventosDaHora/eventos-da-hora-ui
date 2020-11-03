@@ -1,0 +1,165 @@
+.container {
+  padding: 6em 1em 1em 1em;
+}
+
+h5, h4, h3, h2, a {
+  margin: 0;
+  color: white;
+  text-align: center;
+}
+
+a {
+  text-align: center;
+  margin: 10px;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.carrinho-vazio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  color: white;
+}
+
+.carrinho {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .titulo-carrinho {
+    text-align: center;
+    margin: 0 0 10px 0;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 2px;
+  }
+
+  p {
+    font-size: 1em;
+    margin: 2px;
+  }
+
+  .eventos, .totalizacao {
+    display: flex;
+    flex-direction: column;
+    background-color: #0D0E0E;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    padding: 1em;
+    border-radius: 3px;
+    margin-bottom: 2em;
+
+    .infos-evento {
+      letter-spacing: .05em;
+      .fechar {
+        font-size: 1em;
+        float: right;
+        color: white;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: .875em;
+      }
+
+      select {
+        padding: 5px 10px 5px 10px;
+      }
+
+      hr {
+        width: 100%;
+        background: #999999;
+      }
+
+    }
+
+    .checkout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        margin-right: .5em;
+      }
+
+      .quantidade {
+        width: 7em;
+      }
+
+      .excluir {
+        display: none;
+        a {
+          color: #e35e25;
+        }
+      }
+
+      .subtotal {
+        font-size: 2em;
+        text-align: right;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 700px) {
+  .carrinho {
+    width: 90%;
+    margin-top: 50px;
+    h1 {
+      font-size: 3.5em ;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+
+
+    .eventos {
+      flex-direction: row;
+      justify-content: space-between;
+      .infos-evento {
+        .fechar, hr {
+          display: none;
+        }
+      }
+
+      .checkout {
+        .excluir {
+          display: flex;
+          cursor: pointer;
+          text-align: center;
+          color: #e35e25;;
+        }
+
+        .subtotal {
+          font-size: 1.8em;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 900px) {
+  .carrinho {
+    width: 70%;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .carrinho {
+    width: 60%;
+  }
+}
+
+

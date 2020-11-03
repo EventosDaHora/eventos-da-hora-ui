@@ -1,6 +1,4 @@
-export class Payment {
-
-
+export class PaymentRequest {
 
     constructor(
         public paymentType?: string,

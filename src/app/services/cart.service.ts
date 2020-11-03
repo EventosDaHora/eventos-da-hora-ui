@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Order} from "../dominio/order/Order";
-import {TicketOrder} from "../dominio/order/TicketOrder";
+import {OrderRequest} from "../dominio/order/request/OrderRequest";
+import {TicketOrderRequest} from "../dominio/order/request/TicketOrderRequest";
 import {UserService} from "./user/user.service";
 import {AuthService} from "../infra/security/auth.service";
-import {Payment} from "../dominio/order/Payment";
+import {PaymentRequest} from "../dominio/order/request/PaymentRequest";
 import {Event} from "../dominio/Event";
-import {OrderService} from "./order.service";
+import {OrderRequestService} from "./orderRequest.service";
 import {User} from "../dominio/user/user.model";
 import {NotificationService} from "./notification.service";
 import {Router} from "@angular/router";
@@ -16,13 +16,13 @@ import {Router} from "@angular/router";
 // @ts-ignore
 export class CartService {
 
-    public order: Order;
+    public order: OrderRequest;
 
     constructor(public authService: AuthService,
-                public orderService: OrderService,
+                public orderService: OrderRequestService,
                 public notificationService: NotificationService,
                 private router: Router) {
-        this.order = new Order();
+        this.order = new OrderRequest();
 
         if (authService.currentUser) {
             this.order.emailNotification = authService.currentUser.sub;
@@ -31,18 +31,18 @@ export class CartService {
     }
 
     public clearCart() {
-        this.order = new Order();
+        this.order = new OrderRequest();
     }
 
     public addPaymentType(paymentType: string) {
-        this.order.payment = new Payment(paymentType,  this.getTotalValue());
+        this.order.payment = new PaymentRequest(paymentType,  this.getTotalValue());
     }
 
     public addFeesCart(fees: number) {
         this.order.fees = fees;
     }
 
-    public addTicketCart(ticketOrder: TicketOrder) {
+    public addTicketCart(ticketOrder: TicketOrderRequest) {
         this.order.tickets.push(ticketOrder);
     }
 

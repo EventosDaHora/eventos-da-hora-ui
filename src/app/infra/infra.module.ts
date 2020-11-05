@@ -4,7 +4,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputBuscaComponent} from './input-busca/input-busca.component';
 import {RodapeComponent} from './rodape/rodape.component';
-import {CalendarModule, DropdownModule, InputMaskModule} from 'primeng';
+import {CalendarModule, DropdownModule, InputMaskModule, SharedModule} from 'primeng';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputTextoComponent} from './input-texto/input-texto.component';
 import {InputMaskComponent} from './input-mask/input-mask.component';
@@ -17,6 +17,7 @@ import {SidebarModule} from "primeng/sidebar";
 import {HttpClientModule} from "@angular/common/http";
 import {MessagesModule} from 'primeng/messages';
 import {FormFieldErrorComponent} from "./form-field-error/form-field-error.component";
+import {AccordionModule} from 'primeng/accordion';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,8 @@ import {FormFieldErrorComponent} from "./form-field-error/form-field-error.compo
         FileUploadModule,
         HttpClientModule,
         MessagesModule,
+        AccordionModule,
+        SharedModule
     ],
     exports: [
         InputBuscaComponent,

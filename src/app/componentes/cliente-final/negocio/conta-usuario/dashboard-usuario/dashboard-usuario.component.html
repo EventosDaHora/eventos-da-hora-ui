@@ -12,7 +12,21 @@
                     <p><strong>Status: </strong>{{getStatusOrder(order.status)}}</p>
                     <p><strong>Data: </strong>{{order.dtCreate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
                     <p><strong>Taxa de serviço: </strong>{{order.fees | currency}}</p>
-                    <p *ngIf="order.idPayment != null"><strong>Valor Total: </strong>{{getTotalValue(order)}}</p>
+                    <p *ngIf="order.paymentRequest != null"><strong>Valor Total: R</strong>{{order.paymentRequest.vlAmount | currency}}</p>
+                    <br>
+                    <p-accordion expandIcon="pi pi-fw pi-plus" collapseIcon="pi pi-fw pi-minus" >
+                        <p-accordionTab header="Ingressos" (click)="getSectionTicket(order)">
+                            <div *ngFor="let ticket of order.items; let indexId = index;">
+                                <div *ngIf="ticket.sectionRequest != null && ticket.sectionRequest.eventRequest != null">
+                                    <p><strong>Evento:</strong>{{ticket.sectionRequest.eventRequest.name}}</p>
+                                    <p><strong>Setor:</strong>{{ticket.sectionRequest.name}}</p>
+                                    <p><strong>Valor:</strong>R{{ticket.sectionRequest.ammount | currency}}</p>
+                                    <br>
+                                    <hr>
+                                </div>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
                     <hr>
                 </div>
             </div>

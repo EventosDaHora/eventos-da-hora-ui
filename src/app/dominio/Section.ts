@@ -1,5 +1,6 @@
 import {BaseResourceModel} from "./base-resource.model";
 import {Ticket} from "./Ticket";
+import {Event} from "./Event";
 
 export class Section extends BaseResourceModel {
 
@@ -10,6 +11,9 @@ export class Section extends BaseResourceModel {
         public ammount?: number,
         public metadata?: string,
         public tickets?: Ticket[],
+        public eventId?:number,
+
+        public eventRequest?: Event
     ) {
         super()
     }

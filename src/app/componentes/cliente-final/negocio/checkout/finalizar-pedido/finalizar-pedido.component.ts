@@ -55,7 +55,6 @@ export class FinalizarPedidoComponent implements OnInit {
 
       this.cartService.addPaymentType(this.metodoPagamento);
 
-      console.log(this.cartService.order);
       this.cartService.sendOrder().subscribe(
           (resourceTemp) => this.actionsForSuccess(),
           (error) => this.actionsForError(error)

@@ -2,7 +2,7 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 // @ts-ignore
 import {Event} from 'src/app/dominio/Event';
 import {FiltroEvento} from '../../../../dominio/enums/FiltroEvento';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ResolucaoDispositivoService} from '../../../../services/resolucao-dispositivo.service';
 import {EventoService} from "../../../../services/evento/evento.service";
 import {ImageEvent} from "../../../../dominio/ImageEvent";
@@ -34,7 +34,8 @@ export class BannerComponent implements OnInit {
 
     constructor(private router: Router,
                 private resolucao: ResolucaoDispositivoService,
-                private eventService: EventoService) {
+                private eventService: EventoService,
+                protected route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
@@ -88,5 +89,9 @@ export class BannerComponent implements OnInit {
         } else {
             return `${this.apiImageURL}/images/${imageThumb.imageId}`;
         }
+    }
+
+    searchEvents(event: String) {
+        console.log(this.route.snapshot.params.searchWord);
     }
 }

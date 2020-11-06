@@ -10,7 +10,7 @@
     <div class="infos-evento">
 
       <a routerLink="/checkout/evento"><h1>{{ event.name }}</h1></a>
-      <p>{{ event.date | date: 'dd/MM/yyyy'}}</p>
+      <p>{{ event.date | date: 'dd/MM/yyyy - H:mm'}}</p>
       <a (click)="navigateToCategoria(local, event)">
         {{ event.localization.localization }},</a>&nbsp;&nbsp;
 
@@ -24,7 +24,7 @@
       <p style="margin-bottom: 1em">Ingressos a partir de R{{ event.sections[0].ammount | currency}}</p>
 
       <div [ngStyle]="{'display': mostrarBusca && !isMobile ? 'block' : 'none' }">
-        <app-input-busca></app-input-busca>
+        <app-input-busca (change)="searchEvents($event)"></app-input-busca>
       </div>
     </div>
   </ng-template>

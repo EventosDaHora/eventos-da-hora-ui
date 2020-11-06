@@ -1,1 +1,1 @@
-<input type="text" pInputText placeholder="Buscar por artista, evento ou local"/>
+<input [(ngModel)]="val" type="text" (keydown.enter)="search()" pInputText placeholder="Buscar por artista, evento ou local"/>

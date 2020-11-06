@@ -8,6 +8,7 @@ export class Ticket extends BaseResourceModel {
         public initialQuantity?: number,
         public sectionId?: number,
 
+        public externalItemId?: number,
         public sectionRequest?: Section,
     ) {
         super()

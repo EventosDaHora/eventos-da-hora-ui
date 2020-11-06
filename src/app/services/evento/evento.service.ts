@@ -25,4 +25,13 @@ export class EventoService extends BaseResourceService<Event> {
             catchError(this.handlerError)
         );
     }
+
+    findEvents(): Observable<Event> {
+        const url = `${this.apiPath}/random`;
+
+        return this.http.get(url).pipe(
+            map(this.jsonDataToResource.bind(this)),
+            catchError(this.handlerError)
+        );
+    }
 }

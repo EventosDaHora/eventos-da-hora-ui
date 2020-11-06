@@ -58,12 +58,16 @@ export class DashboardUsuarioComponent implements OnInit {
     }
 
     public getSectionTicket(orderItem: Order) {
+        console.log(orderItem);
         orderItem.items.forEach(ticket =>{
             if(ticket.sectionId == null) {
-                this.ticketService.getById(ticket.id).subscribe(responseTicket => {
+                console.log('ticketID:'+ ticket.externalItemId);
+                this.ticketService.getById(ticket.externalItemId).subscribe(responseTicket => {
                     let ticketAux = responseTicket as Ticket;
+                    console.log('sectionID:'+ ticketAux.sectionId);
                     this.sectionService.getById(ticketAux.sectionId).subscribe(responseSection => {
                         ticket.sectionRequest = responseSection as Section;
+                        console.log('eventID:'+ ticket.sectionRequest.eventId);
                         this.eventoService.getById(ticket.sectionRequest.eventId).subscribe(responseEvent =>{
                             ticket.sectionRequest.eventRequest = responseEvent as Event;
                         })

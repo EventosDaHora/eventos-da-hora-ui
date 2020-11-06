@@ -81,6 +81,7 @@ export class CartService {
     }
 
     public sendOrder() {
+        console.log(this.order);
         return this.orderService.create(this.order);
 
     }

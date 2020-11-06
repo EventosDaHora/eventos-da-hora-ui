@@ -1,12 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Order} from "../dominio/order/Order";
 import {TicketOrder} from "../dominio/order/TicketOrder";
-import {UserService} from "./user/user.service";
 import {AuthService} from "../infra/security/auth.service";
 import {Payment} from "../dominio/order/Payment";
-import {Event} from "../dominio/Event";
 import {OrderService} from "./order.service";
-import {User} from "../dominio/user/user.model";
 import {NotificationService} from "./notification.service";
 import {Router} from "@angular/router";
 

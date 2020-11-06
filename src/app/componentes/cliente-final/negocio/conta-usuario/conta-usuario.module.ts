@@ -6,7 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CriarContaComponent} from './criar-conta/criar-conta.component';
 import {LoginComponent} from './login/login.component';
 import {ResetarSenhaComponent} from './resetar-senha/resetar-senha.component';
-import {ButtonModule, CardModule, InputMaskModule} from 'primeng';
+import {AccordionModule, SharedModule, ButtonModule, CardModule, InputMaskModule} from 'primeng';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {DashboardUsuarioComponent} from './dashboard-usuario/dashboard-usuario.component';
 import {AuthGuard} from "../../../../infra/security/auth-guard.service";
@@ -52,7 +52,9 @@ const rotas: Routes = [
         CommonModule,
         FormsModule,
         InfraModule,
-        RouterModule.forChild(rotas)
+        RouterModule.forChild(rotas),
+        AccordionModule,
+        SharedModule
     ]
 })
 export class ContaUsuarioModule {

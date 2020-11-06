@@ -1,4 +1,5 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
+// @ts-ignore
 import {Event} from 'src/app/dominio/Event';
 import {FiltroEvento} from '../../../../dominio/enums/FiltroEvento';
 import {Router} from '@angular/router';
@@ -49,6 +50,7 @@ export class BannerComponent implements OnInit {
 
     @HostListener('window:resize', ['$event'])
     @HostListener('window:load', ['$event'])
+    // @ts-ignore
     tamanhoDaTela() {
         this.isMobile = this.resolucao.tamanhoDaTela();
     }

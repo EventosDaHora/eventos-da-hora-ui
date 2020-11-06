@@ -3,7 +3,7 @@ import {Event} from '../../../../../../dominio/Event';
 import {EventoService} from '../../../../../../services/evento/evento.service';
 import {ResolucaoDispositivoService} from '../../../../../../services/resolucao-dispositivo.service';
 import {ActivatedRoute, Router} from "@angular/router";
-import {TicketOrder} from "../../../../../../dominio/order/TicketOrder";
+import {TicketOrderRequest} from "../../../../../../dominio/order/request/TicketOrderRequest";
 import {CartService} from "../../../../../../services/cart.service";
 
 @Component({
@@ -42,7 +42,7 @@ export class EventoComponent implements OnInit {
         return ['maior-menor', 'menor-maior'];
     }
 
-    public addCart(ticketOrder: TicketOrder) {
+    public addCart(ticketOrder: TicketOrderRequest) {
         ticketOrder.event = this.evento;
         this.cartService.addTicketCart(ticketOrder);
     }

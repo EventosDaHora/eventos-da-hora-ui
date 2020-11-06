@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Event} from "../../../../../../dominio/Event";
 import {Section} from "../../../../../../dominio/Section";
 import {Ticket} from "../../../../../../dominio/Ticket";
-import {TicketOrder} from "../../../../../../dominio/order/TicketOrder";
+import {TicketOrderRequest} from "../../../../../../dominio/order/request/TicketOrderRequest";
 import {NotificationService} from "../../../../../../services/notification.service";
 
 
@@ -19,7 +19,7 @@ export class EscolhaIngressoComponent implements OnInit {
     section: Section;
 
     @Output()
-    change: EventEmitter<TicketOrder> = new EventEmitter<TicketOrder>();
+    change: EventEmitter<TicketOrderRequest> = new EventEmitter<TicketOrderRequest>();
 
     constructor(public notificationService: NotificationService) {
     }
@@ -28,7 +28,7 @@ export class EscolhaIngressoComponent implements OnInit {
     }
 
     public addTicket(section: Section) {
-        this.change.emit(new TicketOrder(this.qtd, this.section));
+        this.change.emit(new TicketOrderRequest(this.qtd, this.section));
         this.notificationService.success("Adicionado com sucesso", "Ingresso")
     }
 }

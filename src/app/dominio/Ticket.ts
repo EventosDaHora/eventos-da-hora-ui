@@ -1,10 +1,14 @@
 import {BaseResourceModel} from "./base-resource.model";
+import {Section} from "./Section";
 
 export class Ticket extends BaseResourceModel {
 
     constructor(
-        public id?: string,
-        public initialQuantity?: number
+        public id?: number,
+        public initialQuantity?: number,
+        public sectionId?: number,
+
+        public sectionRequest?: Section,
     ) {
         super()
     }

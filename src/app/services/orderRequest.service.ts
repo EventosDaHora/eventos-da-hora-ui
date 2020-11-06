@@ -1,5 +1,5 @@
 import {Injectable, Injector} from '@angular/core';
-import {Order} from "../dominio/order/Order";
+import {OrderRequest} from "../dominio/order/request/OrderRequest";
 import {BaseResourceService} from "./base-resource.service";
 import {environment} from "../../environments/environment";
 
@@ -8,10 +8,10 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 // @ts-ignore
-export class OrderService extends BaseResourceService<Order> {
+export class OrderRequestService extends BaseResourceService<OrderRequest> {
 
   constructor(protected injector: Injector) {
-    super(`${environment.apiUrl}/eventos-da-hora-order-api/orders`, injector, Order.fromJson);
+    super(`${environment.apiUrl}/eventos-da-hora-order-api/orders`, injector, OrderRequest.fromJson);
   }
 
 }

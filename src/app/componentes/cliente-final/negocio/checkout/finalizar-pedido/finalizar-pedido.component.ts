@@ -8,7 +8,7 @@ import {EventoService} from '../../../../../services/evento/evento.service';
 import {AuthService} from "../../../../../infra/security/auth.service";
 import {CartService} from "../../../../../services/cart.service";
 import {NotificationService} from "../../../../../services/notification.service";
-import {OrderService} from "../../../../../services/order.service";
+import {OrderRequestService} from "../../../../../services/orderRequest.service";
 
 @Component({
   selector: 'app-finalizar-pedido',

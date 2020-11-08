@@ -22,6 +22,9 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
     public searchWordSubscription: Subscription;
     public searchWord: string;
 
+    public categoryIdSubscription: Subscription;
+    public categoryId: string;
+
     @Input()
         // @ts-ignore
     mostrarInfosEvento ? = true;
@@ -30,10 +33,19 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
                 private data: DataService) {
         super(eventoService);
 
-        this.searchWordSubscription = this.data.currentMessage.subscribe(item => {
+        this.searchWordSubscription = this.data.currentMessageSearchWord.subscribe(item => {
             this.searchWord = item;
             if (this.searchWord != undefined) {
                 this.eventoService.findEventBySearchWord(this.searchWord).subscribe(
+                    response => this.   resources = response as Event[]
+                )
+            }
+        });
+
+        this.categoryIdSubscription = this.data.currentMessageCategoryId.subscribe(item => {
+            this.categoryId = item;
+            if (this.categoryId != undefined) {
+                this.eventoService.findEventByCategoryId(this.categoryId).subscribe(
                     response => this.   resources = response as Event[]
                 )
             }

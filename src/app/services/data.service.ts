@@ -7,14 +7,22 @@ import {BehaviorSubject} from "rxjs";
 // @ts-ignore
 export class DataService {
     public searchWord: string;
+    public categoryId: string;
 
-    public messageSource = new BehaviorSubject<string>(this.searchWord);
-    currentMessage = this.messageSource.asObservable();
+    public messageSourceSearchWord = new BehaviorSubject<string>(this.searchWord);
+    currentMessageSearchWord = this.messageSourceSearchWord.asObservable();
+
+    public messageSourceCategoryId = new BehaviorSubject<string>(this.categoryId);
+    currentMessageCategoryId = this.messageSourceCategoryId.asObservable();
 
     constructor() {}
 
-    changeMessage(searchWord: string) {
-        this.messageSource.next(searchWord)
+    changeMessageSearchWord(searchWord: string) {
+        this.messageSourceSearchWord.next(searchWord)
+    }
+
+    changeMessageCategoryId(categoryId: string) {
+        this.messageSourceCategoryId.next(categoryId)
     }
 
 }

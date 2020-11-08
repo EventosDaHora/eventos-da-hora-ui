@@ -1,11 +1,11 @@
-    <app-banner [event]="evento" [mostrarBusca]="true"></app-banner>
+<app-banner [event]="evento" [mostrarBusca]="true"></app-banner>
 
-    <ul class = "container-categoria">
-      <li *ngFor="let categoria of categorias">
-        {{categoria.name}}
-      </li>
-    </ul>
+<ul class="container-categoria">
+    <li *ngFor="let categoria of categorias">
+          <span (click)="searchEventsByCategory(categoria.id)"> {{categoria.name}}</span>
+    </li>
+</ul>
 
 <!--    <app-filtro-evento></app-filtro-evento>-->
-    <app-card-evento></app-card-evento>
+<app-card-evento></app-card-evento>
 

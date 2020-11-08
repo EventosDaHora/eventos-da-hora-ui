@@ -12,6 +12,7 @@ import { EventosCategoriaComponent } from './eventos-categoria/eventos-categoria
 import {FormsModule} from '@angular/forms';
 import {CheckboxModule} from 'primeng/checkbox';
 import { IndicadorFiltroComponent } from './filtro-evento/indicador-filtro/indicador-filtro.component';
+import {DataViewModule} from 'primeng/dataview';
 
 const rotas: Routes = [
   {path: '', component: IndexComponent},
@@ -42,7 +43,8 @@ const rotas: Routes = [
     RouterModule.forChild(rotas),
     CalendarModule,
     DropdownModule,
-    CardModule
+    CardModule,
+    DataViewModule
   ],
   exports: [IndexComponent, BannerComponent]
 })

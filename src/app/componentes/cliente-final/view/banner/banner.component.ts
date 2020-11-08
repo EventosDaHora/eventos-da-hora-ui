@@ -94,6 +94,6 @@ export class BannerComponent implements OnInit {
     }
 
     searchEvents(event: string) {
-         this.data.changeMessage(event);
+         this.data.changeMessageSearchWord(event);
     }
 }

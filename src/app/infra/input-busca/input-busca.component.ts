@@ -27,10 +27,7 @@ export class InputBuscaComponent extends InputComponent {
   @Output()
   change: EventEmitter<String> = new EventEmitter<String>();
 
-
   search() {
-    console.log('--- emit ---');
-    console.log(this.val);
     this.change.emit(this.val);
   }
 

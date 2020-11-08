@@ -35,4 +35,13 @@ export class EventoService extends BaseResourceService<Event> {
         }
     }
 
+    findEventByCategoryId(categoryId: string) {
+        if (categoryId != undefined) {
+            return this.http.get(this.apiPath + "?categoryId=" + categoryId).pipe(
+                map(this.jsonDataToResources.bind(this)),
+                catchError(this.handlerError)
+            );
+        }
+    }
+
 }

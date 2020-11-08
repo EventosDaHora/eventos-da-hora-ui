@@ -7,6 +7,7 @@ import {ResolucaoDispositivoService} from '../../../../services/resolucao-dispos
 import {EventoService} from "../../../../services/evento/evento.service";
 import {ImageEvent} from "../../../../dominio/ImageEvent";
 import {environment} from "../../../../../environments/environment";
+import {DataService} from "../../../../services/data.service";
 
 @Component({
     selector: 'app-banner',
@@ -35,7 +36,8 @@ export class BannerComponent implements OnInit {
     constructor(private router: Router,
                 private resolucao: ResolucaoDispositivoService,
                 private eventService: EventoService,
-                protected route: ActivatedRoute) {
+                protected route: ActivatedRoute,
+                private data: DataService) {
     }
 
     ngOnInit(): void {
@@ -91,7 +93,7 @@ export class BannerComponent implements OnInit {
         }
     }
 
-    searchEvents(event: String) {
-        console.log(this.route.snapshot.params.searchWord);
+    searchEvents(event: string) {
+         this.data.changeMessage(event);
     }
 }

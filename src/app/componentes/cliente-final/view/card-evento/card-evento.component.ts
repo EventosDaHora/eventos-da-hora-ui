@@ -7,6 +7,8 @@ import {EventoService} from '../../../../services/evento/evento.service';
 import {BaseResourceListComponent} from "../../../../infra/base-resource-list/base-resource-list.component";
 import {Event} from "../../../../dominio/Event";
 import {ImageEvent} from "../../../../dominio/ImageEvent";
+import {DataService} from "../../../../services/data.service";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'app-card-evento',
@@ -17,12 +19,26 @@ import {ImageEvent} from "../../../../dominio/ImageEvent";
 export class CardEventoComponent extends BaseResourceListComponent<Event> {
     responsiveOptions;
 
+    public searchWordSubscription: Subscription;
+    public searchWord: string;
+
     @Input()
-    // @ts-ignore
+        // @ts-ignore
     mostrarInfosEvento ? = true;
 
-    constructor(private eventoService: EventoService) {
-      super(eventoService);
+    constructor(private eventoService: EventoService,
+                private data: DataService) {
+        super(eventoService);
+
+        this.searchWordSubscription = this.data.currentMessage.subscribe(item => {
+            this.searchWord = item;
+            if (this.searchWord != undefined) {
+                this.eventoService.findEventBySearchWord(this.searchWord).subscribe(
+                    response => this.   resources = response as Event[]
+                )
+            }
+        });
+
         this.responsiveOptions = [
             {
                 breakpoint: '2000px',
@@ -64,15 +80,15 @@ export class CardEventoComponent extends BaseResourceListComponent<Event> {
     private loadImageEvent(event: Event, typeImage: string) {
         let imageThumb: ImageEvent = null;
 
-        event.images.forEach(image =>{
-            if(image.imageType === typeImage){
+        event.images.forEach(image => {
+            if (image.imageType === typeImage) {
                 imageThumb = image;
             }
         })
 
-        if(imageThumb == null){
+        if (imageThumb == null) {
             return 'assets/show-live.jpg';
-        }else{
+        } else {
             return `${this.apiImageURL}/images/${imageThumb.imageId}`;
         }
     }

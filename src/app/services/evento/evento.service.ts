@@ -26,12 +26,13 @@ export class EventoService extends BaseResourceService<Event> {
         );
     }
 
-    findEvents(): Observable<Event> {
-        const url = `${this.apiPath}/random`;
-
-        return this.http.get(url).pipe(
-            map(this.jsonDataToResource.bind(this)),
-            catchError(this.handlerError)
-        );
+    findEventBySearchWord(searchWord: string) {
+        if (searchWord != undefined) {
+            return this.http.get(this.apiPath + "?searchWord=" + searchWord).pipe(
+                map(this.jsonDataToResources.bind(this)),
+                catchError(this.handlerError)
+            );
+        }
     }
+
 }

@@ -22,13 +22,16 @@ export class InputBuscaComponent extends InputComponent {
     super();
   }
 
+  public val: string;
+
   @Output()
   change: EventEmitter<String> = new EventEmitter<String>();
 
 
   search() {
     console.log('--- emit ---');
-    this.change.emit(this.value);
+    console.log(this.val);
+    this.change.emit(this.val);
   }
 
 }

@@ -43,7 +43,16 @@ export class CartService {
     }
 
     public addTicketCart(ticketOrder: TicketOrderRequest) {
-        this.order.tickets.push(ticketOrder);
+        let isAdd = true;
+        this.order.tickets.forEach(t => {
+            if(ticketOrder.section.id === t.section.id){
+                t.quantity += ticketOrder.quantity;
+                isAdd = false;
+            }
+        })
+        if(isAdd) {
+            this.order.tickets.push(ticketOrder);
+        }
     }
 
     public removeTicketCart(indexList: number) {

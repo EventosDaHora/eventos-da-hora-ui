@@ -16,7 +16,7 @@
         <p>Uma visão geral do seu pedido</p>
       </div>
 
-      <div class="p-grid eventos" *ngFor="let ticket of cartService.order.tickets; let indexId = index;">
+      <div class="p-grid eventos" *ngFor="let ticket of cartTemp.tickets; let indexId = index;">
         <div class="p-col-12 p-md-6 p-lg-6 infos-evento">
           <i class="pi pi-times fechar"></i>
           <h1>{{ticket.event.name}}</h1>
@@ -34,6 +34,7 @@
                        [clearable]="false"
                        [searchable]="false"
                        [(ngModel)]="ticket.quantity"
+                       (change)="updateTicketQuantity(ticket, $event)"
                        name="{{ticket.quantity}}"
                        id="{{quantidade+indexId}}"
                        class="custom">
@@ -41,7 +42,7 @@
 
 
           </div>
-          <div class="excluir" (click)="cartService.removeTicketCart(indexId)">
+          <div class="excluir" (click)="removeTicketCart(indexId)">
             <a>Excluir</a>
           </div>
           <h1 class="subtotal">R{{(ticket.section.ammount * ticket.quantity) | currency}}</h1>

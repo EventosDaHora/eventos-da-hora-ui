@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {OrderRequest} from "../dominio/order/request/OrderRequest";
 import {TicketOrderRequest} from "../dominio/order/request/TicketOrderRequest";
 import {UserService} from "./user/user.service";
@@ -10,58 +10,90 @@ import {User} from "../dominio/user/user.model";
 import {NotificationService} from "./notification.service";
 import {Router} from "@angular/router";
 
+const STORAGE_KEY = 'ACTUAL-CART-OBJECT';
+
 @Injectable({
     providedIn: 'root'
 })
 // @ts-ignore
 export class CartService {
 
-    public order: OrderRequest;
-
     constructor(public authService: AuthService,
                 public orderService: OrderRequestService,
                 public notificationService: NotificationService,
                 private router: Router) {
-        this.order = new OrderRequest();
+
+        if(this.getCartFromStorage() === null){
+            this.clearCart();
+        }
 
         if (authService.currentUser) {
-            this.order.emailNotification = authService.currentUser.sub;
-            this.order.userId = authService.currentUser.idUser;
+            this.updateUserData(authService.currentUser.sub, authService.currentUser.idUser);
         }
     }
 
+    private updateCartFromStorage(order: OrderRequest){
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(order));
+    }
+
+    private getCartFromStorage(): OrderRequest{
+        return JSON.parse(localStorage.getItem(STORAGE_KEY));
+    }
+
+    public getOrder(){
+        return this.getCartFromStorage();
+    }
+
     public clearCart() {
-        this.order = new OrderRequest();
+        this.updateCartFromStorage(new OrderRequest());
     }
 
     public addPaymentType(paymentType: string) {
-        this.order.payment = new PaymentRequest(paymentType,  this.getTotalValue());
+        let order = this.getCartFromStorage();
+        order.payment = new PaymentRequest(paymentType,  this.getTotalValue());
+        this.updateCartFromStorage(order);
     }
 
     public addFeesCart(fees: number) {
-        this.order.fees = fees;
+        let order = this.getCartFromStorage();
+        order.fees = fees;
+        this.updateCartFromStorage(order);
     }
 
     public addTicketCart(ticketOrder: TicketOrderRequest) {
         let isAdd = true;
-        this.order.tickets.forEach(t => {
+        let order = this.getCartFromStorage();
+
+        order.tickets.forEach(t => {
             if(ticketOrder.section.id === t.section.id){
                 t.quantity += ticketOrder.quantity;
                 isAdd = false;
             }
         })
         if(isAdd) {
-            this.order.tickets.push(ticketOrder);
+            order.tickets.push(ticketOrder);
+        }
+
+        this.updateCartFromStorage(order);
+    }
+
+    public addTicketCartWithQuantity(ticketOrder: TicketOrderRequest, quantity: number) {
+        while (quantity > 0){
+            this.addTicketCart(ticketOrder);
+            quantity--;
         }
     }
 
     public removeTicketCart(indexList: number) {
-        this.order.tickets.splice(indexList, 1);
+        let order = this.getCartFromStorage();
+        order.tickets.splice(indexList, 1);
+        this.updateCartFromStorage(order);
     }
 
     public getTotalValue(): number {
+        let order = this.getCartFromStorage();
         let total: number = 0;
-        this.order.tickets.forEach(ticket => {
+        order.tickets.forEach(ticket => {
             total += ticket.quantity * ticket.section.ammount;
         })
 
@@ -69,12 +101,14 @@ export class CartService {
     }
 
     public getTotalFees() {
-        return this.order.fees;
+        let order = this.getCartFromStorage();
+        return order.fees;
     }
 
     public getQuantityItemCart(): number {
+        let order = this.getCartFromStorage();
         let total: number = 0;
-        this.order.tickets.forEach(ticket => {
+        order.tickets.forEach(ticket => {
             total++;
         })
 
@@ -90,9 +124,27 @@ export class CartService {
     }
 
     public sendOrder() {
-        console.log(this.order);
-        return this.orderService.create(this.order);
-
+        let order = this.getCartFromStorage();
+        return this.orderService.create(order);
     }
 
+    updateUserData(sub: any, idUser: any) {
+        let order = this.getCartFromStorage();
+
+        order.emailNotification = sub;
+        order.userId = idUser;
+
+        this.updateCartFromStorage(order);
+    }
+
+    updateTicketQuantity(ticket: TicketOrderRequest, quantity: number) {
+        let order = this.getOrder();
+        order.tickets.forEach(t => {
+            if(t.id === ticket.id){
+                t.quantity = quantity;
+            }
+        })
+
+        this.updateCartFromStorage(order);
+    }
 }

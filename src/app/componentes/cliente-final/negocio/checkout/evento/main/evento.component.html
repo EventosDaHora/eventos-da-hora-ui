@@ -50,7 +50,7 @@
         <p-card>
 <!--          <img src="/assets/mapa-ambiente.png" style="width: 100%; height: 360px">-->
 
-            <div *ngFor="let ticket of cartService.order.tickets; let indexId = index;">
+            <div *ngFor="let ticket of cartService.getOrder().tickets; let indexId = index;">
               <div class="row">
 
                 <div class="p-col-12 p-md-12 p-lg-12">

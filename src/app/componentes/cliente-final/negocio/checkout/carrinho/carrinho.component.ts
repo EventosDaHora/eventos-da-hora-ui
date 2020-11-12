@@ -5,6 +5,8 @@ import {EventoService} from '../../../../../services/evento/evento.service';
 import {CartService} from "../../../../../services/cart.service";
 import {AuthService} from "../../../../../infra/security/auth.service";
 import {NotificationService} from "../../../../../services/notification.service";
+import {OrderRequest} from "../../../../../dominio/order/request/OrderRequest";
+import {TicketOrderRequest} from "../../../../../dominio/order/request/TicketOrderRequest";
 
 @Component({
   selector: 'app-carrinho',
@@ -26,11 +28,13 @@ export class CarrinhoComponent implements OnInit {
 
   fees: number = 5;
 
-  ngOnInit(): void {
+  public cartTemp:  OrderRequest;
 
+  ngOnInit(): void {
+    this.cartTemp = this.cartService.getOrder();
   }
 
-  finalizarPedido() {
+  public finalizarPedido() {
     this.buildFinalOrder();
 
     if(!this.authService.isLoggedIn()){
@@ -48,15 +52,22 @@ export class CarrinhoComponent implements OnInit {
 
   private buildFinalOrder() {
     if( this.authService.currentUser) {
-      this.cartService.order.emailNotification = this.authService.currentUser.sub;
-      this.cartService.order.userId = this.authService.currentUser.idUser;
+      this.cartService.updateUserData(this.authService.currentUser.sub, this.authService.currentUser.idUser);
     }
 
     this.cartService.addFeesCart(this.fees);
   }
 
-  getTotalValueForPayment() {
+  public getTotalValueForPayment() {
     return this.cartService.getTotalValue() + this.fees;
   }
 
+  public removeTicketCart(indexId: number) {
+    this.cartService.removeTicketCart(indexId)
+    this.ngOnInit();
+  }
+
+  updateTicketQuantity(ticket: TicketOrderRequest, quantity: number) {
+    this.cartService.updateTicketQuantity(ticket, quantity);
+  }
 }

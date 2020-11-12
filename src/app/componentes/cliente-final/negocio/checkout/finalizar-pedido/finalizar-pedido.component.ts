@@ -49,6 +49,8 @@ export class FinalizarPedidoComponent implements OnInit {
   }
 
   public finalizarPedido() {
+    console.log("--- finalizarPedido");
+
     if(!this.metodoPagamento){
       this.notificationService.warning('Método de pagamento deve ser escolhido para continuar', 'Pagamento');
     }else {

@@ -62,14 +62,22 @@ export abstract class BaseFormComponent {
     protected abstract buildResourceForm(): void;
 
     protected actionsForError(error): void {
-        this.notificationService.error('Falha ao processar sua solicitação!', 'Erro');
-        this.submittingForm = false;
-
         let wrapper: WrapperApierror = error.error;
         wrapper.status = error.status
 
         this.serverErrorMessages = wrapper;
 
+        console.log(this.serverErrorMessages);
+
+        let messages: string = 'Falha ao processar sua solicitação!';
+        if (this.serverErrorMessages.apierror != undefined) {
+            this.serverErrorMessages.apierror.subErrors.forEach(e => {
+                messages = (e.message);
+            })
+        }
+
+        this.notificationService.error(messages, 'Erro');
+        this.submittingForm = false;
         this.listenToServiceErrorChange();
     }
 

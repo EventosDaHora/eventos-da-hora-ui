@@ -41,6 +41,8 @@ export class CriarSenhaComponent extends BaseFormComponent implements OnInit {
             this.router.navigate(['conta/dashboard-usuario']);
         }
 
+        this.notificationService.success("Crie uma senha para continuar seu cadastro!", "Criar Senha");
+
         this.buildResourceForm();
     }
 

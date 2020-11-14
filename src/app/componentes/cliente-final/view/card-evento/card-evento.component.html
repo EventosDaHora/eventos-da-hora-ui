@@ -1,53 +1,51 @@
-  <section class="card-container">
+<section class="card-container">
 
-    <div>
-      <p-carousel [value]="resources"
-                  [numVisible]="4"
-                  [numScroll]="1"
-                  [circular]="false"
-                  [responsiveOptions]="responsiveOptions"
-                  class="carrossel">
+    <p-dataView [value]="resources">
         <p-header>
-          <h1>Eventos Populares</h1>
+            <h1>Eventos Populares</h1>
         </p-header>
-        <ng-template let-evento pTemplate="item">
-          <a routerLink="/checkout/evento" (click)="selectEvent(evento)">
-            <div class="car-details"
-                 fxLayoutAlign="center"
-                 fxLayout="row"
-                 fxLayout.xs="row"
-                 fxLayoutGap.xs="0">
 
-              <div class="p-nogutter">
-                <div class="container-img">
-                  <img [src]="loadThumbImage(evento)"  alt="imagem"/>
-                </div>
-                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.name}}</div>
-                <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.localization.country.description}}</div>
+        <ng-template let-evento pTemplate="listItem">
+            <div class="p-col-12 p-md-3 p-lg-4 p-xl-4">
+                <a routerLink="/checkout/evento" (click)="selectEvent(evento)">
+                    <div class="car-details"
+                         fxLayoutAlign="center"
+                         fxLayout="row"
+                         fxLayout.xs="row"
+                         fxLayoutGap.xs="0">
 
-                <ng-template [ngIf]="mostrarInfosEvento">
-                  <div class="info-evento">
-                    <span class="local">{{evento.localization.localization}}</span>
-                    <span class="cidade">{{evento.localization.country.description}}, {{evento.localization.city.description}}</span>
-                  </div>
+                        <div class="p-nogutter">
+                            <div class="container-img">
+                                <img [src]="loadThumbImage(evento)" alt="imagem"/>
+                            </div>
+                            <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.name}}</div>
+                            <div class="evento-nome"
+                                 *ngIf="mostrarInfosEvento">{{evento.localization.country.description}}</div>
 
-                  <div class="data-valor">
-                    <span class="data">{{evento.date | date: 'dd/MM/yyyy' }}</span>
-                    <span class="valor">R{{evento.sections[0].ammount | currency}}</span>
-                  </div>
-                </ng-template>
+                            <ng-template [ngIf]="mostrarInfosEvento">
+                                <div class="info-evento">
+                                    <span class="local">{{evento.localization.localization}}</span>
+                                    <span class="cidade">{{evento.localization.country.description}}
+                                        , {{evento.localization.city.description}}</span>
+                                </div>
 
-                <ng-template [ngIf]="!mostrarInfosEvento">
-                  <div class="localidade">
-                    <span>20 eventos</span>
-                  </div>
-                </ng-template>
+                                <div class="data-valor">
+                                    <span class="data">{{evento.date | date: 'dd/MM/yyyy' }}</span>
+                                    <span class="valor">R{{evento.sections[0].ammount | currency}}</span>
+                                </div>
+                            </ng-template>
 
-              </div>
+                            <ng-template [ngIf]="!mostrarInfosEvento">
+                                <div class="localidade">
+                                    <span>20 eventos</span>
+                                </div>
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </a>
             </div>
-          </a>
         </ng-template>
-      </p-carousel>
-    </div>
+    </p-dataView>
 
-  </section>
+</section>

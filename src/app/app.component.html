@@ -18,9 +18,12 @@
       <li class="logo" routerLink=""><span>EVENTOS D'AHORA</span></li>
 
       <li class="item" routerLink="/conta/login" *ngIf="!authService.isLoggedIn()">
-        Minha conta
+        Login
       </li>
 
+      <li class="item" routerLink="/conta/criar-conta" *ngIf="!authService.isLoggedIn()">
+        Novo usuário
+      </li>
 
       <li *ngIf="authService.isLoggedIn()" class="item" routerLink="/conta/dashboard-usuario"
           title=" Clique aqui para visualizar sua conta">

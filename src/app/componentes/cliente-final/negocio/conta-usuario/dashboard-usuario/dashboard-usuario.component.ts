@@ -46,10 +46,10 @@ export class DashboardUsuarioComponent implements OnInit {
 
     startSubscription() {
         this.findAll();
-        this.updateSubscription = interval(2000).subscribe(
-            () => {
-                this.findAll();
-            });
+        // this.updateSubscription = interval(2000).subscribe(
+        //     () => {
+        //         this.findAll();
+        //     });
     }
 
     findAll() {

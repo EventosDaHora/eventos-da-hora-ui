@@ -36,9 +36,9 @@ export class DashboardUsuarioComponent implements OnInit {
         this.startSubscription();
     }
 
-    ngOnDestroy() {
-        this.stopSubscription();
-    }
+    // ngOnDestroy() {
+    //     this.stopSubscription();
+    // }
 
     stopSubscription() {
         this.updateSubscription.unsubscribe();

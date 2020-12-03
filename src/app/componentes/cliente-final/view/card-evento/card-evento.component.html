@@ -19,7 +19,7 @@
                                 <img [src]="loadThumbImage(evento)" alt="imagem"/>
                             </div>
                             <div class="evento-nome" *ngIf="mostrarInfosEvento">{{evento.name}}</div>
-                            <div class="evento-nome"
+                            <div class="evento-nome evento-localizacao"
                                  *ngIf="mostrarInfosEvento">{{evento.localization.country.description}}</div>
 
                             <ng-template [ngIf]="mostrarInfosEvento">

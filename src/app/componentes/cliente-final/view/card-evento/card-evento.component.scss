@@ -16,11 +16,21 @@
 
 }
 
+.evento {
+  display: flex;
+  align-items: center;
+}
+
 .carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item, .evento-nome {
   font-weight: 700;
   margin-top: 24px;
 
 }
+
+.evento-nome {
+  padding: 10px;
+}
+
 
 .carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-subtitle {
   margin: 0.25em 0 2em 0;
@@ -108,6 +118,10 @@ img:hover {
   bottom: 50%;
   transform: translate(-50%, -50%);
   color: #FFB300;
+}
+
+.evento-localizacao {
+  bottom: 40%;
 }
 
 .data-valor {
